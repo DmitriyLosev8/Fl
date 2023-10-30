@@ -1,0 +1,325 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+// 0x00000001 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::Awake()
+extern void PlaytestingCanvas_Awake_m1B48AB1E618D4A3902F746228921AC4283781433 (void);
+// 0x00000002 System.Collections.IEnumerator Agava.YandexGames.Samples.PlaytestingCanvas::Start()
+extern void PlaytestingCanvas_Start_m893492686F36821F533AD8C1AE282EB06158D849 (void);
+// 0x00000003 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnDestroy()
+extern void PlaytestingCanvas_OnDestroy_m180811B279C44D81A1F94BE3C967AFD65AE98B19 (void);
+// 0x00000004 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnShowInterstitialButtonClick()
+extern void PlaytestingCanvas_OnShowInterstitialButtonClick_m73C08EE7DC0C0A3A14DDBE45B8676418FA1FE525 (void);
+// 0x00000005 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnShowVideoButtonClick()
+extern void PlaytestingCanvas_OnShowVideoButtonClick_m634614F244A49FFADD297B3ABE73F363569BA8B9 (void);
+// 0x00000006 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnShowStickyAdButtonClick()
+extern void PlaytestingCanvas_OnShowStickyAdButtonClick_m740A82D0DE590898F4F59C2362A1B9593289CA9F (void);
+// 0x00000007 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnHideStickyAdButtonClick()
+extern void PlaytestingCanvas_OnHideStickyAdButtonClick_m96C32393B65E35E0F14534C3DA236D893FE4E4EB (void);
+// 0x00000008 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnAuthorizeButtonClick()
+extern void PlaytestingCanvas_OnAuthorizeButtonClick_mE579195C5F1DF62389C54188DFA48FA233F7B311 (void);
+// 0x00000009 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnRequestPersonalProfileDataPermissionButtonClick()
+extern void PlaytestingCanvas_OnRequestPersonalProfileDataPermissionButtonClick_m4D522632EBF70D84AEF422DA7292F98DD066EAEC (void);
+// 0x0000000A System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnGetProfileDataButtonClick()
+extern void PlaytestingCanvas_OnGetProfileDataButtonClick_mCED1E0BB92B1B735B689D8AB6AFF0068F6F15842 (void);
+// 0x0000000B System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnSetLeaderboardScoreButtonClick()
+extern void PlaytestingCanvas_OnSetLeaderboardScoreButtonClick_m5CB5F6D96F6B7E7779489BD4BDE06C394F95D504 (void);
+// 0x0000000C System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnGetLeaderboardEntriesButtonClick()
+extern void PlaytestingCanvas_OnGetLeaderboardEntriesButtonClick_m2FA1D0B6074994772C58388734EC24E3AC1FB22D (void);
+// 0x0000000D System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnGetLeaderboardPlayerEntryButtonClick()
+extern void PlaytestingCanvas_OnGetLeaderboardPlayerEntryButtonClick_m60163B9D968D5E0D7DA778A391F11098DC2C1F90 (void);
+// 0x0000000E System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnSetCloudSaveDataButtonClick()
+extern void PlaytestingCanvas_OnSetCloudSaveDataButtonClick_m0B60DF227279E1EAB7EC8ADC7DC4B2227BDDF588 (void);
+// 0x0000000F System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnGetCloudSaveDataButtonClick()
+extern void PlaytestingCanvas_OnGetCloudSaveDataButtonClick_mF1543D95DE749F28BA7AC2F0B1BA1FA9CED1C9E3 (void);
+// 0x00000010 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnGetEnvironmentButtonClick()
+extern void PlaytestingCanvas_OnGetEnvironmentButtonClick_m6F14C2C23690BC6ABC209FF216FA30F0D8407DC1 (void);
+// 0x00000011 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnCallGameReadyButtonClick()
+extern void PlaytestingCanvas_OnCallGameReadyButtonClick_m11DE6CB47EC9D3ECE7221EA639B0D656F626ECE0 (void);
+// 0x00000012 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnSuggestShortcutButtonClick()
+extern void PlaytestingCanvas_OnSuggestShortcutButtonClick_mBEAE89BFDE755776E3EAABDD852E2EB8D9773F51 (void);
+// 0x00000013 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnRequestReviewButtonClick()
+extern void PlaytestingCanvas_OnRequestReviewButtonClick_mE34B2846AB127CBBA0FFAA8B3580FBD262C0B457 (void);
+// 0x00000014 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnCanSuggestShortcutButtonClick()
+extern void PlaytestingCanvas_OnCanSuggestShortcutButtonClick_m38D5C09135E2AAB03CCB82CAC0842DF90CEA4DA5 (void);
+// 0x00000015 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnCanRequestReviewButtonClick()
+extern void PlaytestingCanvas_OnCanRequestReviewButtonClick_m28EAE69D40DB410E7F3FECEA50B9925C6E6A2B5C (void);
+// 0x00000016 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::OnAuthorizedInBackground()
+extern void PlaytestingCanvas_OnAuthorizedInBackground_mCC471B80082E7A5AD64BC99445CDA7BE5A4AD4B5 (void);
+// 0x00000017 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::.ctor()
+extern void PlaytestingCanvas__ctor_mBAE99B2CDACD358B41A623A99B94CCAB8E15F8AA (void);
+// 0x00000018 System.Void Agava.YandexGames.Samples.PlaytestingCanvas::<OnGetCloudSaveDataButtonClick>b__17_0(System.String)
+extern void PlaytestingCanvas_U3COnGetCloudSaveDataButtonClickU3Eb__17_0_m77B79D4F626F05D72B1CD041C2C0E427D5EB2A84 (void);
+// 0x00000019 System.Void Agava.YandexGames.Samples.PlaytestingCanvas/<Start>d__4::.ctor(System.Int32)
+extern void U3CStartU3Ed__4__ctor_m1FC4DEF0DBDCE0A976757EB4E337296B02324730 (void);
+// 0x0000001A System.Void Agava.YandexGames.Samples.PlaytestingCanvas/<Start>d__4::System.IDisposable.Dispose()
+extern void U3CStartU3Ed__4_System_IDisposable_Dispose_mAFC335AC042D58A8E37C7D9DE60FA21254DF1A4D (void);
+// 0x0000001B System.Boolean Agava.YandexGames.Samples.PlaytestingCanvas/<Start>d__4::MoveNext()
+extern void U3CStartU3Ed__4_MoveNext_mFFCECC7FD2FBE088E88238DEA2960C66C9DE1BED (void);
+// 0x0000001C System.Object Agava.YandexGames.Samples.PlaytestingCanvas/<Start>d__4::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CStartU3Ed__4_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m4D03EF1B0213D8E15E99F570BA8D538FF371FFD1 (void);
+// 0x0000001D System.Void Agava.YandexGames.Samples.PlaytestingCanvas/<Start>d__4::System.Collections.IEnumerator.Reset()
+extern void U3CStartU3Ed__4_System_Collections_IEnumerator_Reset_m18B171BFB84FA5B8FD20696B305458AD18907EDC (void);
+// 0x0000001E System.Object Agava.YandexGames.Samples.PlaytestingCanvas/<Start>d__4::System.Collections.IEnumerator.get_Current()
+extern void U3CStartU3Ed__4_System_Collections_IEnumerator_get_Current_mE1B4B48692EF7C532494D7BF5B04DB827F4001EE (void);
+// 0x0000001F System.Void Agava.YandexGames.Samples.PlaytestingCanvas/<>c::.cctor()
+extern void U3CU3Ec__cctor_m2CD64992D62B7794F6E73CDC155D22E7AB034C45 (void);
+// 0x00000020 System.Void Agava.YandexGames.Samples.PlaytestingCanvas/<>c::.ctor()
+extern void U3CU3Ec__ctor_m9F560FAE6C70F2DD6FE17944BD77E495301E6140 (void);
+// 0x00000021 System.Void Agava.YandexGames.Samples.PlaytestingCanvas/<>c::<OnGetProfileDataButtonClick>b__12_0(Agava.YandexGames.PlayerAccountProfileDataResponse)
+extern void U3CU3Ec_U3COnGetProfileDataButtonClickU3Eb__12_0_m02C1321C4C86A61E189AE30AB0064C8023944DC2 (void);
+// 0x00000022 System.Void Agava.YandexGames.Samples.PlaytestingCanvas/<>c::<OnGetLeaderboardEntriesButtonClick>b__14_0(Agava.YandexGames.LeaderboardGetEntriesResponse)
+extern void U3CU3Ec_U3COnGetLeaderboardEntriesButtonClickU3Eb__14_0_mF85406629BA8EE9DCEA3B0E992B17D89448EF322 (void);
+// 0x00000023 System.Void Agava.YandexGames.Samples.PlaytestingCanvas/<>c::<OnGetLeaderboardPlayerEntryButtonClick>b__15_0(Agava.YandexGames.LeaderboardEntryResponse)
+extern void U3CU3Ec_U3COnGetLeaderboardPlayerEntryButtonClickU3Eb__15_0_m04A3F6036CD05C8880808BCA2607B7D09466AEDF (void);
+// 0x00000024 System.Void Agava.YandexGames.Samples.PlaytestingCanvas/<>c::<OnCanSuggestShortcutButtonClick>b__22_0(System.Boolean)
+extern void U3CU3Ec_U3COnCanSuggestShortcutButtonClickU3Eb__22_0_m42EBB44E05F4B843449E9AB35A8062C0F788518F (void);
+// 0x00000025 System.Void Agava.YandexGames.Samples.PlaytestingCanvas/<>c::<OnCanRequestReviewButtonClick>b__23_0(System.Boolean,System.String)
+extern void U3CU3Ec_U3COnCanRequestReviewButtonClickU3Eb__23_0_mC10F809AC2CE89F5ED0D3DD7F215A39D77076F6B (void);
+// 0x00000026 System.Void Agava.YandexGames.Samples.ProductCatalogPanel::Awake()
+extern void ProductCatalogPanel_Awake_m387B11BD443F10D0F605EBFB316C9B41CC63DCD9 (void);
+// 0x00000027 System.Void Agava.YandexGames.Samples.ProductCatalogPanel::OnEnable()
+extern void ProductCatalogPanel_OnEnable_mCBDFD1E8608E3C645F37F11B82C09CC3780EA54F (void);
+// 0x00000028 System.Void Agava.YandexGames.Samples.ProductCatalogPanel::UpdateProductCatalog(Agava.YandexGames.CatalogProduct[])
+extern void ProductCatalogPanel_UpdateProductCatalog_m53B884654F8B27F952F495D8B29A58EEDC0292B0 (void);
+// 0x00000029 System.Void Agava.YandexGames.Samples.ProductCatalogPanel::.ctor()
+extern void ProductCatalogPanel__ctor_mC08E94CA7FF9E4AC000015CD24E52BD16CC835C0 (void);
+// 0x0000002A System.Void Agava.YandexGames.Samples.ProductCatalogPanel::<OnEnable>b__4_0(Agava.YandexGames.GetProductCatalogResponse)
+extern void ProductCatalogPanel_U3COnEnableU3Eb__4_0_mD38A89C32FAD50747B1B8240C2C8B3FF869BBDCB (void);
+// 0x0000002B System.Void Agava.YandexGames.Samples.ProductPanel::set_Product(Agava.YandexGames.CatalogProduct)
+extern void ProductPanel_set_Product_m27CF1196CDE99FA5D36D5A959743072198BC03BC (void);
+// 0x0000002C System.Collections.IEnumerator Agava.YandexGames.Samples.ProductPanel::DownloadAndSetProductImage(System.String)
+extern void ProductPanel_DownloadAndSetProductImage_m315AFA04BCEEB7B862F4435975872344C1945A90 (void);
+// 0x0000002D System.Void Agava.YandexGames.Samples.ProductPanel::OnPurchaseButtonClick()
+extern void ProductPanel_OnPurchaseButtonClick_mD5FA6C8D9120544D171220FC1E5C9CF586958E67 (void);
+// 0x0000002E System.Void Agava.YandexGames.Samples.ProductPanel::OnPurchaseAndConsumeButtonClick()
+extern void ProductPanel_OnPurchaseAndConsumeButtonClick_m7BE4EB99407CF07E46A4C4AFABED8B4BA776E7CD (void);
+// 0x0000002F System.Void Agava.YandexGames.Samples.ProductPanel::.ctor()
+extern void ProductPanel__ctor_m65B6F6CEBD181050E735BDBE3E90A12FD965AA43 (void);
+// 0x00000030 System.Void Agava.YandexGames.Samples.ProductPanel/<DownloadAndSetProductImage>d__5::.ctor(System.Int32)
+extern void U3CDownloadAndSetProductImageU3Ed__5__ctor_m3B80B344C2B4565E3327E6A21F45745A2D014AD0 (void);
+// 0x00000031 System.Void Agava.YandexGames.Samples.ProductPanel/<DownloadAndSetProductImage>d__5::System.IDisposable.Dispose()
+extern void U3CDownloadAndSetProductImageU3Ed__5_System_IDisposable_Dispose_m739A189123FA283AF3B43E24B70F2978A9C3996C (void);
+// 0x00000032 System.Boolean Agava.YandexGames.Samples.ProductPanel/<DownloadAndSetProductImage>d__5::MoveNext()
+extern void U3CDownloadAndSetProductImageU3Ed__5_MoveNext_mFFC690053C302EA77714F5AEAD8D9FC9CC6CB6F5 (void);
+// 0x00000033 System.Object Agava.YandexGames.Samples.ProductPanel/<DownloadAndSetProductImage>d__5::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CDownloadAndSetProductImageU3Ed__5_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mC45E98F173C07AA4ADA8026F55560568705F96FE (void);
+// 0x00000034 System.Void Agava.YandexGames.Samples.ProductPanel/<DownloadAndSetProductImage>d__5::System.Collections.IEnumerator.Reset()
+extern void U3CDownloadAndSetProductImageU3Ed__5_System_Collections_IEnumerator_Reset_m67FC65740756FACA82A19921CEEFAB1F10B675A1 (void);
+// 0x00000035 System.Object Agava.YandexGames.Samples.ProductPanel/<DownloadAndSetProductImage>d__5::System.Collections.IEnumerator.get_Current()
+extern void U3CDownloadAndSetProductImageU3Ed__5_System_Collections_IEnumerator_get_Current_mAC61D738ECD69C528055D347D7307696E9F6BC57 (void);
+// 0x00000036 System.Void Agava.YandexGames.Samples.ProductPanel/<>c::.cctor()
+extern void U3CU3Ec__cctor_mC4B5793B9D2C1642AC4162701DCB7F71518F76C3 (void);
+// 0x00000037 System.Void Agava.YandexGames.Samples.ProductPanel/<>c::.ctor()
+extern void U3CU3Ec__ctor_m3858A3A04F11F6E43147EA4CFCF1011B9A73E9F6 (void);
+// 0x00000038 System.Void Agava.YandexGames.Samples.ProductPanel/<>c::<OnPurchaseButtonClick>b__6_0(Agava.YandexGames.PurchaseProductResponse)
+extern void U3CU3Ec_U3COnPurchaseButtonClickU3Eb__6_0_mAD80E3346B9B539FF6724FC85214DE7F54A95F5F (void);
+// 0x00000039 System.Void Agava.YandexGames.Samples.ProductPanel/<>c::<OnPurchaseAndConsumeButtonClick>b__7_0(Agava.YandexGames.PurchaseProductResponse)
+extern void U3CU3Ec_U3COnPurchaseAndConsumeButtonClickU3Eb__7_0_mF49D321DBF8282A0EE37E035A72D841BD44E878F (void);
+// 0x0000003A System.Void Agava.YandexGames.Samples.ProductPanel/<>c__DisplayClass7_0::.ctor()
+extern void U3CU3Ec__DisplayClass7_0__ctor_m82471F7B8D7D119B13DCD292EC90485448DC26DA (void);
+// 0x0000003B System.Void Agava.YandexGames.Samples.ProductPanel/<>c__DisplayClass7_0::<OnPurchaseAndConsumeButtonClick>b__1()
+extern void U3CU3Ec__DisplayClass7_0_U3COnPurchaseAndConsumeButtonClickU3Eb__1_m246DB071060029EE3F699D5E8A3A141C620569B0 (void);
+// 0x0000003C System.Void Agava.YandexGames.Samples.PurchasedProductListPanel::Awake()
+extern void PurchasedProductListPanel_Awake_m14626E0FD9402F3ABC5AD9329E30C2F3D72C4361 (void);
+// 0x0000003D System.Void Agava.YandexGames.Samples.PurchasedProductListPanel::OnEnable()
+extern void PurchasedProductListPanel_OnEnable_m7C3E00561E42BD96C416ABC1F72A0F971CE21FEB (void);
+// 0x0000003E System.Void Agava.YandexGames.Samples.PurchasedProductListPanel::UpdatePurchasedProducts(Agava.YandexGames.PurchasedProduct[])
+extern void PurchasedProductListPanel_UpdatePurchasedProducts_mC7E85A841A56186751D304A149158C13A7577969 (void);
+// 0x0000003F System.Void Agava.YandexGames.Samples.PurchasedProductListPanel::RemovePurchasedProductPanel(Agava.YandexGames.Samples.PurchasedProductPanel)
+extern void PurchasedProductListPanel_RemovePurchasedProductPanel_m6882FBB4428B1CED7F56E0C3DE20ECB3ACAF1A86 (void);
+// 0x00000040 System.Void Agava.YandexGames.Samples.PurchasedProductListPanel::.ctor()
+extern void PurchasedProductListPanel__ctor_mD1BB05C3D539135B663B4F2726403349E9E71367 (void);
+// 0x00000041 System.Void Agava.YandexGames.Samples.PurchasedProductListPanel::<OnEnable>b__4_0(Agava.YandexGames.GetPurchasedProductsResponse)
+extern void PurchasedProductListPanel_U3COnEnableU3Eb__4_0_m3A1206E9608A5ED81642B5A7D6DA9BB9BC51FAE7 (void);
+// 0x00000042 System.Void Agava.YandexGames.Samples.PurchasedProductPanel::set_PurchasedProduct(Agava.YandexGames.PurchasedProduct)
+extern void PurchasedProductPanel_set_PurchasedProduct_m016CF334F2AA2BC94B1C4BDF0E63294909177FCA (void);
+// 0x00000043 System.Void Agava.YandexGames.Samples.PurchasedProductPanel::OnConsumeButtonClick()
+extern void PurchasedProductPanel_OnConsumeButtonClick_m663047A2A3529F08FB5E2BE5E9E9FD1342E61865 (void);
+// 0x00000044 System.Void Agava.YandexGames.Samples.PurchasedProductPanel::.ctor()
+extern void PurchasedProductPanel__ctor_m6C3FAD5DEECB7CD6ADD1644B6AC6AE0A96ED9B22 (void);
+// 0x00000045 System.Void Agava.YandexGames.Samples.PurchasedProductPanel::<OnConsumeButtonClick>b__5_0()
+extern void PurchasedProductPanel_U3COnConsumeButtonClickU3Eb__5_0_mDDB9D588771221C6E040C7116EC4BA3764A95FA7 (void);
+// 0x00000046 System.Void Agava.YandexGames.Samples.WebEventSystem::OnApplicationFocus(System.Boolean)
+extern void WebEventSystem_OnApplicationFocus_m242C0D9F3B98FA3D1A7ACD63B48C1E3D14F2724E (void);
+// 0x00000047 System.Void Agava.YandexGames.Samples.WebEventSystem::.ctor()
+extern void WebEventSystem__ctor_mE0AA6ABDCE5D753C3B7D8219456E2DC5AC299B0D (void);
+static Il2CppMethodPointer s_methodPointers[71] = 
+{
+	PlaytestingCanvas_Awake_m1B48AB1E618D4A3902F746228921AC4283781433,
+	PlaytestingCanvas_Start_m893492686F36821F533AD8C1AE282EB06158D849,
+	PlaytestingCanvas_OnDestroy_m180811B279C44D81A1F94BE3C967AFD65AE98B19,
+	PlaytestingCanvas_OnShowInterstitialButtonClick_m73C08EE7DC0C0A3A14DDBE45B8676418FA1FE525,
+	PlaytestingCanvas_OnShowVideoButtonClick_m634614F244A49FFADD297B3ABE73F363569BA8B9,
+	PlaytestingCanvas_OnShowStickyAdButtonClick_m740A82D0DE590898F4F59C2362A1B9593289CA9F,
+	PlaytestingCanvas_OnHideStickyAdButtonClick_m96C32393B65E35E0F14534C3DA236D893FE4E4EB,
+	PlaytestingCanvas_OnAuthorizeButtonClick_mE579195C5F1DF62389C54188DFA48FA233F7B311,
+	PlaytestingCanvas_OnRequestPersonalProfileDataPermissionButtonClick_m4D522632EBF70D84AEF422DA7292F98DD066EAEC,
+	PlaytestingCanvas_OnGetProfileDataButtonClick_mCED1E0BB92B1B735B689D8AB6AFF0068F6F15842,
+	PlaytestingCanvas_OnSetLeaderboardScoreButtonClick_m5CB5F6D96F6B7E7779489BD4BDE06C394F95D504,
+	PlaytestingCanvas_OnGetLeaderboardEntriesButtonClick_m2FA1D0B6074994772C58388734EC24E3AC1FB22D,
+	PlaytestingCanvas_OnGetLeaderboardPlayerEntryButtonClick_m60163B9D968D5E0D7DA778A391F11098DC2C1F90,
+	PlaytestingCanvas_OnSetCloudSaveDataButtonClick_m0B60DF227279E1EAB7EC8ADC7DC4B2227BDDF588,
+	PlaytestingCanvas_OnGetCloudSaveDataButtonClick_mF1543D95DE749F28BA7AC2F0B1BA1FA9CED1C9E3,
+	PlaytestingCanvas_OnGetEnvironmentButtonClick_m6F14C2C23690BC6ABC209FF216FA30F0D8407DC1,
+	PlaytestingCanvas_OnCallGameReadyButtonClick_m11DE6CB47EC9D3ECE7221EA639B0D656F626ECE0,
+	PlaytestingCanvas_OnSuggestShortcutButtonClick_mBEAE89BFDE755776E3EAABDD852E2EB8D9773F51,
+	PlaytestingCanvas_OnRequestReviewButtonClick_mE34B2846AB127CBBA0FFAA8B3580FBD262C0B457,
+	PlaytestingCanvas_OnCanSuggestShortcutButtonClick_m38D5C09135E2AAB03CCB82CAC0842DF90CEA4DA5,
+	PlaytestingCanvas_OnCanRequestReviewButtonClick_m28EAE69D40DB410E7F3FECEA50B9925C6E6A2B5C,
+	PlaytestingCanvas_OnAuthorizedInBackground_mCC471B80082E7A5AD64BC99445CDA7BE5A4AD4B5,
+	PlaytestingCanvas__ctor_mBAE99B2CDACD358B41A623A99B94CCAB8E15F8AA,
+	PlaytestingCanvas_U3COnGetCloudSaveDataButtonClickU3Eb__17_0_m77B79D4F626F05D72B1CD041C2C0E427D5EB2A84,
+	U3CStartU3Ed__4__ctor_m1FC4DEF0DBDCE0A976757EB4E337296B02324730,
+	U3CStartU3Ed__4_System_IDisposable_Dispose_mAFC335AC042D58A8E37C7D9DE60FA21254DF1A4D,
+	U3CStartU3Ed__4_MoveNext_mFFCECC7FD2FBE088E88238DEA2960C66C9DE1BED,
+	U3CStartU3Ed__4_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m4D03EF1B0213D8E15E99F570BA8D538FF371FFD1,
+	U3CStartU3Ed__4_System_Collections_IEnumerator_Reset_m18B171BFB84FA5B8FD20696B305458AD18907EDC,
+	U3CStartU3Ed__4_System_Collections_IEnumerator_get_Current_mE1B4B48692EF7C532494D7BF5B04DB827F4001EE,
+	U3CU3Ec__cctor_m2CD64992D62B7794F6E73CDC155D22E7AB034C45,
+	U3CU3Ec__ctor_m9F560FAE6C70F2DD6FE17944BD77E495301E6140,
+	U3CU3Ec_U3COnGetProfileDataButtonClickU3Eb__12_0_m02C1321C4C86A61E189AE30AB0064C8023944DC2,
+	U3CU3Ec_U3COnGetLeaderboardEntriesButtonClickU3Eb__14_0_mF85406629BA8EE9DCEA3B0E992B17D89448EF322,
+	U3CU3Ec_U3COnGetLeaderboardPlayerEntryButtonClickU3Eb__15_0_m04A3F6036CD05C8880808BCA2607B7D09466AEDF,
+	U3CU3Ec_U3COnCanSuggestShortcutButtonClickU3Eb__22_0_m42EBB44E05F4B843449E9AB35A8062C0F788518F,
+	U3CU3Ec_U3COnCanRequestReviewButtonClickU3Eb__23_0_mC10F809AC2CE89F5ED0D3DD7F215A39D77076F6B,
+	ProductCatalogPanel_Awake_m387B11BD443F10D0F605EBFB316C9B41CC63DCD9,
+	ProductCatalogPanel_OnEnable_mCBDFD1E8608E3C645F37F11B82C09CC3780EA54F,
+	ProductCatalogPanel_UpdateProductCatalog_m53B884654F8B27F952F495D8B29A58EEDC0292B0,
+	ProductCatalogPanel__ctor_mC08E94CA7FF9E4AC000015CD24E52BD16CC835C0,
+	ProductCatalogPanel_U3COnEnableU3Eb__4_0_mD38A89C32FAD50747B1B8240C2C8B3FF869BBDCB,
+	ProductPanel_set_Product_m27CF1196CDE99FA5D36D5A959743072198BC03BC,
+	ProductPanel_DownloadAndSetProductImage_m315AFA04BCEEB7B862F4435975872344C1945A90,
+	ProductPanel_OnPurchaseButtonClick_mD5FA6C8D9120544D171220FC1E5C9CF586958E67,
+	ProductPanel_OnPurchaseAndConsumeButtonClick_m7BE4EB99407CF07E46A4C4AFABED8B4BA776E7CD,
+	ProductPanel__ctor_m65B6F6CEBD181050E735BDBE3E90A12FD965AA43,
+	U3CDownloadAndSetProductImageU3Ed__5__ctor_m3B80B344C2B4565E3327E6A21F45745A2D014AD0,
+	U3CDownloadAndSetProductImageU3Ed__5_System_IDisposable_Dispose_m739A189123FA283AF3B43E24B70F2978A9C3996C,
+	U3CDownloadAndSetProductImageU3Ed__5_MoveNext_mFFC690053C302EA77714F5AEAD8D9FC9CC6CB6F5,
+	U3CDownloadAndSetProductImageU3Ed__5_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mC45E98F173C07AA4ADA8026F55560568705F96FE,
+	U3CDownloadAndSetProductImageU3Ed__5_System_Collections_IEnumerator_Reset_m67FC65740756FACA82A19921CEEFAB1F10B675A1,
+	U3CDownloadAndSetProductImageU3Ed__5_System_Collections_IEnumerator_get_Current_mAC61D738ECD69C528055D347D7307696E9F6BC57,
+	U3CU3Ec__cctor_mC4B5793B9D2C1642AC4162701DCB7F71518F76C3,
+	U3CU3Ec__ctor_m3858A3A04F11F6E43147EA4CFCF1011B9A73E9F6,
+	U3CU3Ec_U3COnPurchaseButtonClickU3Eb__6_0_mAD80E3346B9B539FF6724FC85214DE7F54A95F5F,
+	U3CU3Ec_U3COnPurchaseAndConsumeButtonClickU3Eb__7_0_mF49D321DBF8282A0EE37E035A72D841BD44E878F,
+	U3CU3Ec__DisplayClass7_0__ctor_m82471F7B8D7D119B13DCD292EC90485448DC26DA,
+	U3CU3Ec__DisplayClass7_0_U3COnPurchaseAndConsumeButtonClickU3Eb__1_m246DB071060029EE3F699D5E8A3A141C620569B0,
+	PurchasedProductListPanel_Awake_m14626E0FD9402F3ABC5AD9329E30C2F3D72C4361,
+	PurchasedProductListPanel_OnEnable_m7C3E00561E42BD96C416ABC1F72A0F971CE21FEB,
+	PurchasedProductListPanel_UpdatePurchasedProducts_mC7E85A841A56186751D304A149158C13A7577969,
+	PurchasedProductListPanel_RemovePurchasedProductPanel_m6882FBB4428B1CED7F56E0C3DE20ECB3ACAF1A86,
+	PurchasedProductListPanel__ctor_mD1BB05C3D539135B663B4F2726403349E9E71367,
+	PurchasedProductListPanel_U3COnEnableU3Eb__4_0_m3A1206E9608A5ED81642B5A7D6DA9BB9BC51FAE7,
+	PurchasedProductPanel_set_PurchasedProduct_m016CF334F2AA2BC94B1C4BDF0E63294909177FCA,
+	PurchasedProductPanel_OnConsumeButtonClick_m663047A2A3529F08FB5E2BE5E9E9FD1342E61865,
+	PurchasedProductPanel__ctor_m6C3FAD5DEECB7CD6ADD1644B6AC6AE0A96ED9B22,
+	PurchasedProductPanel_U3COnConsumeButtonClickU3Eb__5_0_mDDB9D588771221C6E040C7116EC4BA3764A95FA7,
+	WebEventSystem_OnApplicationFocus_m242C0D9F3B98FA3D1A7ACD63B48C1E3D14F2724E,
+	WebEventSystem__ctor_mE0AA6ABDCE5D753C3B7D8219456E2DC5AC299B0D,
+};
+static const int32_t s_InvokerIndices[71] = 
+{
+	4516,
+	4415,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	4516,
+	3600,
+	3578,
+	4516,
+	4334,
+	4415,
+	4516,
+	4415,
+	6923,
+	4516,
+	3600,
+	3600,
+	3600,
+	3518,
+	1596,
+	4516,
+	4516,
+	3600,
+	4516,
+	3600,
+	3600,
+	3166,
+	4516,
+	4516,
+	4516,
+	3578,
+	4516,
+	4334,
+	4415,
+	4516,
+	4415,
+	6923,
+	4516,
+	3600,
+	3600,
+	4516,
+	4516,
+	4516,
+	4516,
+	3600,
+	3600,
+	4516,
+	3600,
+	3600,
+	4516,
+	4516,
+	4516,
+	3518,
+	4516,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_Agava_YandexGames_Samples_Playtesting_CodeGenModule;
+const Il2CppCodeGenModule g_Agava_YandexGames_Samples_Playtesting_CodeGenModule = 
+{
+	"Agava.YandexGames.Samples.Playtesting.dll",
+	71,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL, // module initializer,
+	NULL,
+	NULL,
+	NULL,
+};
