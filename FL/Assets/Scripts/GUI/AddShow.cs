@@ -20,18 +20,16 @@ public class AddShow : MonoBehaviour
     private void OnEnable()
     {
         UpgradeLightPanel.UpgadeButtonClicked += OnUpdgadeButtonClicked;
-         NextLevelPanel.Awaked += OnNextLevelButtonClicked;
+         NextLevelPanel.NextLevelButtonClicked += OnNextLevelButtonClicked;
         _adOpened += OnAddOpened;
         _adClosed += OnAddClosed;
         _adRewarded += OnAddRewarded;
     }
 
-    
-
     private void OnDisable()
     {
         UpgradeLightPanel.UpgadeButtonClicked -= OnUpdgadeButtonClicked;
-         NextLevelPanel.Awaked -= OnNextLevelButtonClicked;
+         NextLevelPanel.NextLevelButtonClicked -= OnNextLevelButtonClicked;
         _adOpened -= OnAddOpened;
         _adClosed -= OnAddClosed;
         _adRewarded -= OnAddRewarded;
@@ -55,11 +53,12 @@ public class AddShow : MonoBehaviour
     private void OnAddRewarded()
     {
         int angle = 8;
+       
         UnityEngine.PlayerPrefs.SetInt(KeySave.LaternAngle, angle);
     }
 
     private void OnAddClosed()
     {
-        _pauseGame.ResumeGame();
+        _pauseGame.Resume();
     }
 }

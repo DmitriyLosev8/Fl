@@ -33,25 +33,52 @@ public class GUISystem : MonoBehaviour
         TurnSound();
     }
 
-    private void OnEnable()
-    {
-        Application.focusChanged += OnInBackgroundChange;
-        LightContainer.LightChanged += OnLightChanged;
-        _player.OxygenChanged += OnOxygenChanged;
-        _musicToggle.onValueChanged.AddListener(SetMusicValue);
-    }
 
     private void Update()
     {
         _health.value = _player.Health;
     }
 
+    private void OnEnable()
+    {
+        Application.focusChanged += OnInBackgroundChange;
+        LightContainer.LightChanged += OnLightChanged;
+        _player.OxygenChanged += OnOxygenChanged;
+        _musicToggle.onValueChanged.AddListener(OnSetMusicValue);
+    }
+
+
     private void OnDisable()
     {
         Application.focusChanged -= OnInBackgroundChange;
         LightContainer.LightChanged -= OnLightChanged;
         _player.OxygenChanged -= OnOxygenChanged;
-        _musicToggle.onValueChanged.RemoveListener(SetMusicValue);
+        _musicToggle.onValueChanged.RemoveListener(OnSetMusicValue);
+    }
+
+    public void CloseTutorialPanel()
+    {
+        _tutorialPanel.SetActive(false);
+        _pauseGame.Resume();
+    }
+
+    public void OnSetMusicValue(bool isOn)
+    {
+        int turnedOn = 1;
+        int turnedOff = 0;
+
+        if (isOn)
+            UnityEngine.PlayerPrefs.SetInt(KeySave.Music, turnedOn);
+        else
+            UnityEngine.PlayerPrefs.SetInt(KeySave.Music, turnedOff);
+
+        TurnSound();
+    }
+
+    public void OpenTutorialPanel()
+    {
+        _tutorialPanel.SetActive(true);
+        _pauseGame.Pause();
     }
 
     private void OnLevelEnded()
@@ -63,12 +90,6 @@ public class GUISystem : MonoBehaviour
     private void EnableJoistick()
     {
         _joyStick.SetActive(true);
-    }
-
-    public void OpenTutorialPanel()
-    {
-        _tutorialPanel.SetActive(true);
-        _pauseGame.Pause();
     }
 
     private void OnLightChanged(int lightsOrbs)
@@ -106,7 +127,7 @@ public class GUISystem : MonoBehaviour
 
         if (inBackground)
         {
-            _pauseGame.ResumeGame();
+            _pauseGame.Resume();
             isOn = false;
         }
         else
@@ -117,24 +138,5 @@ public class GUISystem : MonoBehaviour
 
         AudioListener.pause = isOn;
         AudioListener.volume = isOn ? 0f : 1f;
-    }
-
-    public void CloseTutorialPanel()
-    {
-        _tutorialPanel.SetActive(false);
-        _pauseGame.ResumeGame();
-    }
-
-    public void SetMusicValue(bool isOn)
-    {
-        int turnedOn = 1;
-        int turnedOff = 0;
-
-        if (isOn)
-            UnityEngine.PlayerPrefs.SetInt(KeySave.Music, turnedOn);
-        else
-            UnityEngine.PlayerPrefs.SetInt(KeySave.Music, turnedOff);
-
-        TurnSound();
     }
 }

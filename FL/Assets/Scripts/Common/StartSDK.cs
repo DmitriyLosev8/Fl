@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using Agava.YandexGames;
 using Agava.YandexGames.Samples;
+using UnityEngine.SceneManagement;
+
 
 public class StartSDK : MonoBehaviour
 {
-    [SerializeField] LanguageSwitcher _languageSwitcher;
-
-
+    private int _mainMenu = 1;
+   
     private void Awake()
     {
-        StartCoroutine(Start());
+        YandexGamesSdk.CallbackLogging = true;
     }
 
     private IEnumerator Start()
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
-        yield break;
+        LoadMainMenu();
+        yield break;      
 #endif
-
-        yield return YandexGamesSdk.Initialize();
-
-        _languageSwitcher.DetermineLanguage();
-        
+        yield return YandexGamesSdk.Initialize(LoadMainMenu);
+   
         YandexGamesSdk.GameReady();
+    }
 
-        if (PlayerAccount.IsAuthorized == false)
-            PlayerAccount.StartAuthorizationPolling(1500);
+    private void LoadMainMenu()
+    {
+        SceneManager.LoadScene(_mainMenu);
     }
 }

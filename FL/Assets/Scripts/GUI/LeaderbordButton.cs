@@ -26,16 +26,11 @@ public class LeaderbordButton : MonoBehaviour
 
     private void OnButtonClick()
     {
-        Show();
+        _leaderbordDisplay.gameObject.SetActive(true);
     }
 
     private void OnCloseButtonClick()
     {
         _leaderbordDisplay.gameObject.SetActive(false);
-    }
-
-    private void Show()
-    {
-        _leaderbordDisplay.gameObject.SetActive(true);       
     }
 }

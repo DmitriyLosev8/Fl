@@ -9,7 +9,6 @@ public class PlayersSounds : MonoBehaviour
 
     private float _delay = 0.28f;
     private float _counterOfTime;
-
     private AudioSource _audioSource;
 
     private void Start()

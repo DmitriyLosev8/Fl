@@ -9,15 +9,15 @@ public class Orb : MonoBehaviour
     [SerializeField] private float _oxygenValueToGive;
     [SerializeField] private float _lightValueToGive;
     [SerializeField] private bool _isOxygen;
-    
+
+    public bool _isSpoted = false;
+
     private Player _player;
     private Vector3 _targetPosition;
     private float _speed = 5.8f;
     private bool _isDestroyed;
     private AudioSource _audioSource;
-
-    public bool _isSpoted = false;
-
+ 
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -29,6 +29,11 @@ public class Orb : MonoBehaviour
             BecomeCollected(_player);
     }
 
+    public void DeterminePlayer(Player player)
+    {
+        _player = player;
+    }
+   
     private void BecomeCollected(Player player)
     {
         DetermineTargetPosition();
@@ -61,10 +66,5 @@ public class Orb : MonoBehaviour
         
         if (_isDestroyed)
             AudioSource.PlayClipAtPoint(_audioSource.clip, transform.position, volume);
-    }
-
-    public void DeterminePlayer(Player player)
-    {
-        _player = player;
     }
 }

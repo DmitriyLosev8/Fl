@@ -7,10 +7,10 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class LevelButton : MonoBehaviour
 {
-    private Button _button;
-    
     public int Id;
    
+    private Button _button;
+    
     public static UnityAction<int> Clicked;
 
     private void Awake()

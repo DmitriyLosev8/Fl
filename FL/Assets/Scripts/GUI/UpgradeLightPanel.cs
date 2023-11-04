@@ -48,7 +48,7 @@ public class UpgradeLightPanel : MonoBehaviour
 
         if (inBackground)
         {
-             _pauseGame.ResumeGame();
+             _pauseGame.Resume();
             isOn = false;
         }
         else

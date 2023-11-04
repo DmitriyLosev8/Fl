@@ -20,6 +20,7 @@ public class IconOfDoor : MonoBehaviour
     {
         Door.Opened += StartOpenedAnimation;
     }
+   
     private void OnDisable()
     {
         Door.Opened -= StartOpenedAnimation;

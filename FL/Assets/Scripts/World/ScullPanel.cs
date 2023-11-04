@@ -6,14 +6,14 @@ public class ScullPanel : MonoBehaviour
 {
     [SerializeField] private Light _leftEye;
     [SerializeField] private Light _rightEye;
-    [SerializeField] private GameObject _deathEnemy;
+    [SerializeField] private GameObject _deadlyEnemy;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Player player))
         {
             TurnLightOn();
-            _deathEnemy.SetActive(true);
+            _deadlyEnemy.SetActive(true);
         }
     }
 
@@ -22,7 +22,7 @@ public class ScullPanel : MonoBehaviour
         if (other.gameObject.TryGetComponent(out Player player))
         {
             TurnLightOff();
-            _deathEnemy.SetActive(false);
+            _deadlyEnemy.SetActive(false);
         }
     }
 

@@ -16,7 +16,7 @@ public class LevelsPanel : MonoBehaviour
 
     private void Paint()
     {
-        int mainMenu = 1;
+        int mainMenu = 2;
 
         if (UnityEngine.PlayerPrefs.HasKey(KeySave.Level))
         {

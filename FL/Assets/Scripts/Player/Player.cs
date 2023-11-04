@@ -15,16 +15,15 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _keySpace;
     [SerializeField] private Arrow _arrow;
 
+    public int DefaultValueOfCurrentKeyId = 100;
+    public int CurrentKeyID;
+   
     private Light _spotLight;
     private float _positionYToSelfDesttoy = -30f;
     private float _oxygenLosingDamage; 
     private float _healthLosingDamage;
     private int _startSpotLightAngle;
     private LightContainer _lightContainer;
-    
-    public bool IsHaveKey { get; private set; }
-    public int DefaultValueOfCurrentKeyId = 100;
-    public int CurrentKeyID;
     
     public static event UnityAction Died;
    
@@ -34,7 +33,13 @@ public class Player : MonoBehaviour
     public int Level { get; private set; }
     public float Health => _health;
     public float Oxygen => _oxygen;
-    
+    public bool IsHaveKey { get; private set; }
+    private void Awake()
+    {
+        _lightContainer = GetComponent<LightContainer>();
+        _spotLight = _laternSpotLight.GetComponent<Light>();
+    }
+   
     private void Start()
     {
         if (UnityEngine.PlayerPrefs.HasKey(KeySave.Level))
@@ -44,22 +49,83 @@ public class Player : MonoBehaviour
         SetStartSpotLightAngle();
     }
 
-    private void Awake()
-    {
-        _lightContainer = GetComponent<LightContainer>();
-        _spotLight = _laternSpotLight.GetComponent<Light>();
-    }
-
     private void Update()
     {
         if (transform.position.y <= _positionYToSelfDesttoy)
             Die();
 
         TryToCollectOrb();
-        EternalDamagePerTime();   
+        SetEternalDamagePerTime();   
     }
 
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out Key key))
+            PickUpKey(key);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out Door door))
+        {
+            if (door.Id == CurrentKeyID)
+            {
+                IsHaveKey = false;
+                DisableArrow();
+                CurrentKeyID = DefaultValueOfCurrentKeyId;
+                Destroy(GetComponent<Key>());
+            }
+        }
+    }
+
+    public void TakeHealthDamage(float healthDamage)
+    {
+        _health -= healthDamage;
+        HealthChanged?.Invoke(_health);
+
+        if (_health <= 0)
+            Die();
+    }
+
+    public void TakeOxygenDamage(float oxygenDamage)
+    {
+        if (_oxygen > 0)
+        {
+            _oxygen -= oxygenDamage;
+            OxygenChanged?.Invoke(_oxygen);
+        }
+
+        if (_oxygen < 0)
+            _oxygen = 0;
+    }
+
+    public void TakeLightDamage(float lightDamage)
+    {
+        if (_spotLight.spotAngle > 0)
+            _spotLight.spotAngle -= lightDamage;
+    }
+
+    public void TakeOxygen(float valueOfOxygen)
+    {
+        int maxOxygen = 100;
+
+        if (_oxygen < maxOxygen)
+        {
+            _oxygen += valueOfOxygen;
+            OxygenChanged?.Invoke(_oxygen);
+        }
+    }
+
+    public void TakeLight(float valueOfLight)
+    {
+        int maxValueOfLigth = 50;
+
+        if (_spotLight.spotAngle < maxValueOfLigth)
+            _spotLight.spotAngle += valueOfLight;
+
+        CollectLightOrb();
+    }
+
     private void SetStartSpotLightAngle()
     {
             if (UnityEngine.PlayerPrefs.HasKey(KeySave.LaternAngle))
@@ -112,54 +178,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void TakeHealthDamage(float healthDamage)
-    {
-        _health -= healthDamage;
-        HealthChanged?.Invoke(_health);
-
-        if (_health <= 0) 
-            Die();
-    }
-
-    public void TakeOxygenDamage(float oxygenDamage)
-    {
-        if(_oxygen > 0)
-        {
-            _oxygen -= oxygenDamage;
-            OxygenChanged?.Invoke(_oxygen);
-        }
-
-        if (_oxygen < 0)
-            _oxygen = 0;
-    }
-
-    public void TakeLightDamage(float lightDamage)
-    {
-        if(_spotLight.spotAngle > 0)
-            _spotLight.spotAngle -= lightDamage;
-    }
-
-    public void TakeOxygen(float valueOfOxygen)
-    {
-        int maxOxygen = 100;
-
-        if (_oxygen < maxOxygen)
-        {
-            _oxygen += valueOfOxygen;
-            OxygenChanged?.Invoke(_oxygen);
-        }  
-    }
-
-    public void TakeLight(float valueOfLight)
-    {
-        int maxValueOfLigth = 50;
-
-        if (_spotLight.spotAngle < maxValueOfLigth)
-            _spotLight.spotAngle += valueOfLight;
-
-        CollectLightOrb();
-    }
-
     private void CollectLightOrb()
     {
         int lightOrb = 1;
@@ -179,26 +197,6 @@ public class Player : MonoBehaviour
         } 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out Key key))
-            PickUpKey(key);  
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out Door door))
-        {     
-            if (door.Id == CurrentKeyID)
-            {
-                IsHaveKey = false;
-                DisableArrow();
-                CurrentKeyID = DefaultValueOfCurrentKeyId;
-                Destroy(GetComponent<Key>());
-            }                
-        }
-    }
-
     private void Die()
     {
         if(_health <= 0)
@@ -209,7 +207,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void EternalDamagePerTime()
+    private void SetEternalDamagePerTime()
     {       
         if(Time.timeScale == 1)
         {

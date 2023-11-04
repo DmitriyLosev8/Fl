@@ -14,8 +14,9 @@ public class Door : MonoBehaviour
     private Animator _animator;
     private AudioSource _audiosourse;
 
-    public int Id => _id;
     public static event UnityAction<int> Opened;
+
+    public int Id => _id;
 
     private void Start()
     {

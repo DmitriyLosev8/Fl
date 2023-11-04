@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
 {
+    public static bool IsPaused;
+   
     [SerializeField] private GameObject _joyStick;
     [SerializeField] AudioSource _music;
-
-    public static bool IsPaused;
 
     public void Pause()
     {
@@ -27,7 +27,7 @@ public class PauseGame : MonoBehaviour
        Time.timeScale = 0;    
     }
 
-    public void ResumeGame()
+    public void Resume()
     {
         if (IsPaused)
         {

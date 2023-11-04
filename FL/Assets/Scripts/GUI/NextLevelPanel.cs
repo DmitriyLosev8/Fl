@@ -16,12 +16,10 @@ public class NextLevelPanel : MonoBehaviour
     [SerializeField] private LevelSave _levelSave;
 
     public static UnityAction NextLevelButtonClicked;
-    public static UnityAction Awaked;
 
     private void Start()
     {
         ShowLightOrbsCount();
-        Awaked?.Invoke();
     }
 
     private void OnEnable()

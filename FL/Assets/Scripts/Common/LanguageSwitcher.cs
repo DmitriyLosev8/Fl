@@ -14,7 +14,7 @@ public class LanguageSwitcher : MonoBehaviour
     private string _english = "English";
     private string _turkish = "Turkish";
 
-    public void DetermineLanguage()  
+    private void Start()  
     {
         string currentLanguage = YandexGamesSdk.Environment.i18n.lang;
 

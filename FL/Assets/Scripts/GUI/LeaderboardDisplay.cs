@@ -18,16 +18,15 @@ namespace Agava.YandexGames.Samples
         [SerializeField] private string _leaderBoardName = "Leaderboard";
         [SerializeField] private InputField _cloudSaveDataInputField;
         [SerializeField] private TMP_Text _anonimus;
+        [SerializeField] private AuthorizationPanel _authorizationPanel;
 
         private int _countOfLights;
 
         private void Awake()
         {
-            YandexGamesSdk.CallbackLogging = true;
-
             if (PlayerAccount.IsAuthorized == false)
             {
-                PlayerAccount.Authorize();
+                _authorizationPanel.gameObject.SetActive(true);    
             }
 
             if (PlayerAccount.IsAuthorized == true)
@@ -40,15 +39,6 @@ namespace Agava.YandexGames.Samples
             }
             
             _countOfLights = _lightContainer.Lights;
-        }
-
-
-        private void OnSuccessCallback(LeaderboardEntryResponse result)
-        {
-            if (result == null || _lightContainer.Lights > result.score)
-            {
-                Leaderboard.SetScore(_leaderBoardName, _lightContainer.Lights);
-            }
         }
 
         public void OpenLeaderboard()
@@ -87,6 +77,14 @@ namespace Agava.YandexGames.Samples
         public void SetLeaderboardScore()
         {
             Leaderboard.GetPlayerEntry(_leaderBoardName, OnSuccessCallback);
+        }
+
+        private void OnSuccessCallback(LeaderboardEntryResponse result)
+        {
+            if (result == null || _lightContainer.Lights > result.score)
+            {
+                Leaderboard.SetScore(_leaderBoardName, _lightContainer.Lights);
+            }
         }
     }
 }

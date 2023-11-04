@@ -28,7 +28,34 @@ public class CircleRenderer : MonoBehaviour
         Render();  
     }
 
+    [System.Obsolete]
+    public void Render()
+    {
+        if (_distanceToNearestTarget > _redDistance || _distanceToNearestTarget <= _distanceToDisableCircle)
+            DisableCircle();
+        else
+            EnableCircle();
 
+        if (_distanceToNearestTarget <= _redDistance && _distanceToNearestTarget > _yellowDistance)
+            _circle.startColor = Color.red;
+
+        if (_distanceToNearestTarget <= _yellowDistance && _distanceToNearestTarget > _greenDistance)
+            _circle.startColor = Color.yellow;
+
+        if (_distanceToNearestTarget <= _greenDistance)
+            _circle.startColor = Color.green;
+    }
+
+    public void DetermineDistancesToTargets()
+    {
+        for (int i = 0; i < _targetsToDetect.Count; i++)
+        {
+            if (_targetsToDetect[i] != null)
+            {
+                _distancesToTargets[i] = Vector3.Distance(transform.position, _targetsToDetect[i].position);
+            }
+        }
+    }
 
     private void DetermineNearestTarget()
     {   
@@ -66,34 +93,5 @@ public class CircleRenderer : MonoBehaviour
     private void DisableCircle()
     {
         _circle.gameObject.SetActive(false);
-    }
-
-    [System.Obsolete]
-    public void Render()
-    {
-        if (_distanceToNearestTarget > _redDistance || _distanceToNearestTarget <= _distanceToDisableCircle)
-            DisableCircle();
-        else
-            EnableCircle();
-
-        if (_distanceToNearestTarget <= _redDistance && _distanceToNearestTarget > _yellowDistance)
-            _circle.startColor = Color.red;
-
-        if (_distanceToNearestTarget <= _yellowDistance && _distanceToNearestTarget > _greenDistance)
-            _circle.startColor = Color.yellow;
-
-        if (_distanceToNearestTarget <= _greenDistance)
-            _circle.startColor = Color.green;
-    }
-
-    public void DetermineDistancesToTargets()
-    {
-        for (int i = 0; i < _targetsToDetect.Count; i++)
-        {
-            if (_targetsToDetect[i] != null)
-            {
-                _distancesToTargets[i] = Vector3.Distance(transform.position, _targetsToDetect[i].position);
-            }
-        }
     }
 }

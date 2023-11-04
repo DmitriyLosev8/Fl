@@ -10,13 +10,12 @@ public class LightContainer : MonoBehaviour
     private int _lights;
     private int _startLights = 0;
 
-    public int Lights => _lights;
-
     public static UnityAction<int> LightChanged;
-
+   
+    public int Lights => _lights;
+   
     private void Start()
     {
-
         if (UnityEngine.PlayerPrefs.HasKey(KeySave.Light_Orb))
             _lights = UnityEngine.PlayerPrefs.GetInt(KeySave.Light_Orb);
         else
@@ -25,21 +24,10 @@ public class LightContainer : MonoBehaviour
             UnityEngine.PlayerPrefs.SetInt(KeySave.Light_Orb, _lights);
             UnityEngine.PlayerPrefs.Save();
         }
-            
+
         LightChanged?.Invoke(_lights);
     }
 
-    //private void OnLoadSuccess(string cloudLights)
-    //{
-    //    _lights = JsonUtility.FromJson<int>(cloudLights);
-    //    Agava.YandexGames.PlayerPrefs.SetInt(KeySave.Light_Orb, _lights);
-    //}
-
-    //public void LoadLights()
-    //{
-    //    PlayerAccount.GetCloudSaveData(OnLoadSuccess);
-    //}
-   
     public void ApplyLights(int light)
     {
         _lights += light;

@@ -12,14 +12,14 @@ public class SceneSwitcher : MonoBehaviour
     [SerializeField] private PauseGame _pauseGame;
     [SerializeField] private GameObject _nextLevelPanel;
 
-    private int _sceneToLoad = 1;
+    private int _sceneToLoad = 2;
 
     public static UnityAction LevelStarted;
 
     private void Start()
     {
         if (_pauseGame != null)
-            _pauseGame.ResumeGame();
+            _pauseGame.Resume();
     }
 
     private void OnEnable()
@@ -27,17 +27,16 @@ public class SceneSwitcher : MonoBehaviour
     {
         LevelChanger.LevelEnded += OnLevelEnded;
         NextLevelPanel.NextLevelButtonClicked += OnLevelChangedToNext;
-        TutorialPanel.LoadMainMenuButtonClicked += LoadMainMenu;
+        TutorialPanel.LoadMainMenuButtonClicked += OnLoadMainMenu;
         Player.Died += OnPlayerDied;
         LevelButton.Clicked += OnLevelButtonClicked;
     }
-
 
     private void OnDisable()
     {
         LevelChanger.LevelEnded -= OnLevelEnded;
         NextLevelPanel.NextLevelButtonClicked -= OnLevelChangedToNext;
-        TutorialPanel.LoadMainMenuButtonClicked -= LoadMainMenu;
+        TutorialPanel.LoadMainMenuButtonClicked -= OnLoadMainMenu;
         Player.Died -= OnPlayerDied;
         LevelButton.Clicked -= OnLevelButtonClicked;
     }
@@ -58,10 +57,10 @@ public class SceneSwitcher : MonoBehaviour
         Application.Quit();
     }
 
-    private void LoadMainMenu()
+    private void OnLoadMainMenu()
     {
-        if (_sceneToLoad != 0)
-            _sceneToLoad = 0;
+        if (_sceneToLoad != 1)
+            _sceneToLoad = 1;
 
         _levelSave.SetCountOfAvalaibleLevels();
         LoadScene();

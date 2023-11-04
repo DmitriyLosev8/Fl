@@ -5,36 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class LevelSave : MonoBehaviour
 {
+    public List<int> AvailableLevels;
+   
     private int _countOfAvailableLevels;
     private List<int> _allLevels = new List<int>();
-    private int _startLevel = 2;
+    private int _startLevel = 3;
 
-    public List<int> AvailableLevels;
-
+  
     private void Start()
     {
         FillAllLevels();
         SetCountOfAvalaibleLevels();
         SetAvalaibleLevels();
-    }
-
-    private void FillAllLevels()
-    {
-        int CountOfLevels = 9;
-        int currentLevel = 0;
-
-        for (int i = 0; i < CountOfLevels; i++)
-        {
-            _allLevels.Add(currentLevel++);
-        }
-    }
-
-    private void SetAvalaibleLevels()
-    {
-        for(int i = 0; i < _countOfAvailableLevels; i++)
-        {
-            AvailableLevels.Add(_allLevels[i]);
-        }
     }
 
     public void SetCountOfAvalaibleLevels()
@@ -53,5 +35,24 @@ public class LevelSave : MonoBehaviour
         _countOfAvailableLevels++;
         UnityEngine.PlayerPrefs.SetInt(KeySave.Level, _countOfAvailableLevels);
         UnityEngine.PlayerPrefs.Save();
+    }
+   
+    private void FillAllLevels()
+    {
+        int CountOfLevels = 10;
+        int currentLevel = 0;
+
+        for (int i = 0; i < CountOfLevels; i++)
+        {
+            _allLevels.Add(currentLevel++);
+        }
+    }
+
+    private void SetAvalaibleLevels()
+    {
+        for(int i = 0; i < _countOfAvailableLevels; i++)
+        {
+            AvailableLevels.Add(_allLevels[i]);
+        }
     }
 }
