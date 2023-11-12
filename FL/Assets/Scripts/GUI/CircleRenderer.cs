@@ -13,7 +13,7 @@ public class CircleRenderer : MonoBehaviour
     private float _distanceToDisableCircle = 1.2f;
     private float _redDistance = 30;
     private float _yellowDistance = 20;
-    private  float _greenDistance = 10;
+    private float _greenDistance = 10;
 
     private void Start()
     {

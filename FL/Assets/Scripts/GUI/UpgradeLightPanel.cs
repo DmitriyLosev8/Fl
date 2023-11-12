@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using Agava.YandexGames.Samples;
 using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using System;
-using TMPro;
+
 
 public class UpgradeLightPanel : MonoBehaviour
 {
@@ -14,7 +11,7 @@ public class UpgradeLightPanel : MonoBehaviour
     [SerializeField] private Sprite _imageAfterClicking;
     [SerializeField] private GameObject _purchaseText;
     [SerializeField] private GameObject _purchasedText;
-    [SerializeField] private PauseGame _pauseGame;
+    [SerializeField] private GamePauser _pauseGame;
 
     private int _readyForPurchaseNumber = 0;
     private int _purchasedNumber = 1;

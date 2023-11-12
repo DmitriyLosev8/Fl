@@ -1,12 +1,7 @@
-using System.Collections;
 using Agava.YandexGames;
 using Agava.YandexGames.Samples;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
-using UnityEngine.Events;
 
 public class AuthorizationPanel : MonoBehaviour
 {

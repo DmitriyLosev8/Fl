@@ -7,7 +7,6 @@ using UnityEngine.Events;
 using Agava.YandexGames.Samples;
 using Agava.YandexGames;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class NextLevelPanel : MonoBehaviour
 {

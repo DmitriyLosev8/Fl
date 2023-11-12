@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LoadingImageRotator : MonoBehaviour
 {  
-    private float _rotateValue = - 0.5f;
+    private float _rotateValue = -0.5f;
     
     private void Update()
     {

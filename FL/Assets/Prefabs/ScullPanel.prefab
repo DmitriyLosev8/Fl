@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leftEye: {fileID: 6228169889127740599}
   _rightEye: {fileID: 6228169890665445235}
-  _deathEnemy: {fileID: 6226839449451853846}
+  _deadlyEnemy: {fileID: 6226839449451853846}
 --- !u!1 &6228169889127740597
 GameObject:
   m_ObjectHideFlags: 0
