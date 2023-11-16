@@ -5,7 +5,7 @@ using UnityEngine;
 public class GraphicElementsRenderer : MonoBehaviour
 {
     [SerializeField] private Transform _keySpace;
-    [SerializeField] private Arrow _arrow;
+    [SerializeField] private DoorPointer _pointer;
 
     private void OnEnable()
     {
@@ -19,14 +19,14 @@ public class GraphicElementsRenderer : MonoBehaviour
         Player.CharacterWalkedOutADoor -= OnCharacterWalkedOutADoor;
     }
 
-    private void EnableArrow()
+    private void EnablePointer()
     {
-        _arrow.gameObject.SetActive(true);
+        _pointer.gameObject.SetActive(true);
     }
 
-    private void DisableArrow()
+    private void DisablePointer()
     {
-        _arrow.gameObject.SetActive(false);
+        _pointer.gameObject.SetActive(false);
     }
 
     private void OnKeyPickedUp(Key key)
@@ -34,12 +34,12 @@ public class GraphicElementsRenderer : MonoBehaviour
         key.transform.position = _keySpace.position;
         key.transform.rotation = _keySpace.rotation;
         key.transform.SetParent(_keySpace);
-        EnableArrow();
+        EnablePointer();
     }
 
     private void OnCharacterWalkedOutADoor()
     {
-        DisableArrow();
+        DisablePointer();
         Destroy(GetComponent<Key>());
     }
 }

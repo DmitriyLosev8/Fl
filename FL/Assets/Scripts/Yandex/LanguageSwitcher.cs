@@ -18,8 +18,6 @@ public class LanguageSwitcher : MonoBehaviour
     {
         string currentLanguage = YandexGamesSdk.Environment.i18n.lang;
 
-        Debug.Log("Проверка языка");
-
         switch (currentLanguage)
         {
             case "en":

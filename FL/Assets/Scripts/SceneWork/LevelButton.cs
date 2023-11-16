@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
@@ -11,7 +9,7 @@ public class LevelButton : MonoBehaviour
     
     private Button _button;
     
-    public static UnityAction<int> Clicked;
+    public static Action<int> Clicked;
 
     public int Id => _id;
 

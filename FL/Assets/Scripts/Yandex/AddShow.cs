@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using Agava.YandexGames.Samples;
 using Agava.YandexGames;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 using System;
 
 public class AddShow : MonoBehaviour
 {
-    private GamePauser _pauseGame;
-
-    private Action _adOpened;
-    private Action _adClosed;
+    public static Action AdOpened;
+    public static Action AdClosed;
+   
     private Action _adRewarded;
     private Action<bool> _interstitialAdClosed;
     private Action<string> _addErrorOccured;
@@ -20,34 +17,25 @@ public class AddShow : MonoBehaviour
     private void OnEnable()
     {
         UpgradeLightPanel.UpgadeButtonClicked += OnUpdgadeButtonClicked;
-        NextLevelPanel.NextLevelButtonClicked += OnNextLevelButtonClicked;
-        _adOpened += OnAddOpened;
-        _adClosed += OnAddClosed;
+        FinishLevelPanel.NextLevelButtonClicked += OnNextLevelButtonClicked;
         _adRewarded += OnAddRewarded;
     }
 
     private void OnDisable()
     {
         UpgradeLightPanel.UpgadeButtonClicked -= OnUpdgadeButtonClicked;
-        NextLevelPanel.NextLevelButtonClicked -= OnNextLevelButtonClicked;
-        _adOpened -= OnAddOpened;
-        _adClosed -= OnAddClosed;
+        FinishLevelPanel.NextLevelButtonClicked -= OnNextLevelButtonClicked;
         _adRewarded -= OnAddRewarded;
     }
 
     private void OnUpdgadeButtonClicked()
     {
-        VideoAd.Show(_adOpened, _adRewarded, _adClosed, _addErrorOccured);
+        VideoAd.Show(AdOpened, _adRewarded, AdClosed, _addErrorOccured);
     }
 
     private void OnNextLevelButtonClicked()
     {
-        InterstitialAd.Show(_adOpened, _interstitialAdClosed, _addErrorOccured); 
-    }
-
-    private void OnAddOpened()
-    {
-        _pauseGame.Pause();
+        InterstitialAd.Show(AdOpened, _interstitialAdClosed, _addErrorOccured); 
     }
 
     private void OnAddRewarded()
@@ -55,10 +43,5 @@ public class AddShow : MonoBehaviour
         int angle = 8;
        
         UnityEngine.PlayerPrefs.SetInt(KeySave.LaternAngle, angle);
-    }
-
-    private void OnAddClosed()
-    {
-        _pauseGame.Resume();
     }
 }

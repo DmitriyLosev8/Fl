@@ -2464,6 +2464,7 @@ GameObject:
   - component: {fileID: 449460774}
   - component: {fileID: 449460775}
   - component: {fileID: 449460776}
+  - component: {fileID: 449460777}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -2688,6 +2689,20 @@ MonoBehaviour:
   _button: {fileID: 438804806}
   _closeButton: {fileID: 669447871}
   _panel: {fileID: 210414454}
+--- !u!114 &449460777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449460758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e33d6c2fd835eb4bb095064a8c239da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _joyStick: {fileID: 0}
+  _music: {fileID: 0}
 --- !u!1 &454465588
 GameObject:
   m_ObjectHideFlags: 0

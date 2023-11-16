@@ -18,7 +18,7 @@ namespace Agava.YandexGames.Samples
         [SerializeField] private string _leaderBoardName = "Leaderboard";
         [SerializeField] private InputField _cloudSaveDataInputField;
         [SerializeField] private TMP_Text _anonimus;
-        [SerializeField] private AuthorizationPanel _authorizationPanel;
+        [SerializeField] private YandexAuthorizationPanel _authorizationPanel;
 
         private int _countOfLights;
 

@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Events;
+
 
 [RequireComponent(typeof(LightContainer))]
 public class Player : MonoBehaviour
@@ -20,9 +19,9 @@ public class Player : MonoBehaviour
     private int _startSpotLightAngle;
     private LightContainer _lightContainer;
     
-    public static event UnityAction Died;
-    public static event UnityAction<Key> KeyPickedUp;
-    public static event UnityAction CharacterWalkedOutADoor;
+    public static Action Died;
+    public static event Action<Key> KeyPickedUp;
+    public static event Action CharacterWalkedOutADoor;
 
     public int Level { get; private set; }
     public bool IsSpotedResoursesOrb { get; private set; }

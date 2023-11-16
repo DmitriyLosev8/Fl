@@ -1,32 +1,23 @@
 using System;
 using System.Collections;
-using Agava.YandexGames.Samples;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 
 public class SceneSwitcher : MonoBehaviour
 {
-    [SerializeField] private LevelSave _levelSave;
+    [SerializeField] private LevelContainer _levelSave;
     [SerializeField] private GamePauser _pauseGame;
     [SerializeField] private GameObject _nextLevelPanel;
 
     private int _sceneToLoad = 2;
 
-    public static UnityAction LevelStarted;
-
-    private void Start()
-    {
-        if (_pauseGame != null)
-            _pauseGame.Resume();
-    }
+    public static Action LevelStarted;
 
     private void OnEnable()
 
     {
-        LevelEnder.LevelEnded += OnLevelEnded;
-        NextLevelPanel.NextLevelButtonClicked += OnLevelChangedToNext;
+        FinishLevelPanel.NextLevelButtonClicked += OnLevelChangedToNext;
         TutorialPanel.LoadMainMenuButtonClicked += OnLoadMainMenu;
         Player.Died += OnPlayerDied;
         LevelButton.Clicked += OnLevelButtonClicked;
@@ -34,17 +25,10 @@ public class SceneSwitcher : MonoBehaviour
 
     private void OnDisable()
     {
-        LevelEnder.LevelEnded -= OnLevelEnded;
-        NextLevelPanel.NextLevelButtonClicked -= OnLevelChangedToNext;
+        FinishLevelPanel.NextLevelButtonClicked -= OnLevelChangedToNext;
         TutorialPanel.LoadMainMenuButtonClicked -= OnLoadMainMenu;
         Player.Died -= OnPlayerDied;
         LevelButton.Clicked -= OnLevelButtonClicked;
-    }
-
-    private void OnLevelEnded()
-    {
-        _nextLevelPanel.SetActive(true);
-        _pauseGame.Pause();
     }
 
     private void LoadScene()

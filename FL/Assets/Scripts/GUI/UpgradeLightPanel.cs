@@ -1,9 +1,6 @@
-using Agava.YandexGames.Samples;
-using Agava.YandexGames;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-
+using System;
 
 public class UpgradeLightPanel : MonoBehaviour
 {
@@ -16,7 +13,7 @@ public class UpgradeLightPanel : MonoBehaviour
     private int _readyForPurchaseNumber = 0;
     private int _purchasedNumber = 1;
 
-    public static UnityAction UpgadeButtonClicked;
+    public static Action UpgadeButtonClicked;
 
     private void Start()
     {
@@ -30,33 +27,13 @@ public class UpgradeLightPanel : MonoBehaviour
     private void OnEnable()
     {
         _button.onClick.AddListener(OnButtonClick);
-        Application.focusChanged += OnInBackgroundChange;
     }
 
     private void OnDisable()
     {
         _button.onClick.RemoveListener(OnButtonClick);
-        Application.focusChanged -= OnInBackgroundChange;
     }
 
-    private void OnInBackgroundChange(bool inBackground)
-    {
-        bool isOn;
-
-        if (inBackground)
-        {
-             _pauseGame.Resume();
-            isOn = false;
-        }
-        else
-        {
-              _pauseGame.Pause();
-            isOn = true;
-        }
-
-        AudioListener.pause = isOn;
-        AudioListener.volume = isOn ? 0f : 1f;
-    }
 
     private void OnButtonClick()
     {

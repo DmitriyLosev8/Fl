@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Events;
+
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private float _value;
 
-    public event UnityAction<float> HealthChanged;
+    public event Action<float> HealthChanged;
 
     public float Value => _value;
 

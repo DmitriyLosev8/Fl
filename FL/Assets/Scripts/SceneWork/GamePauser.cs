@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.Events;
-using UnityEngine.UI;
+
 
 public class GamePauser : MonoBehaviour
 {
@@ -12,7 +8,29 @@ public class GamePauser : MonoBehaviour
     [SerializeField] private GameObject _joyStick;
     [SerializeField] AudioSource _music;
 
-    public void Pause()
+    private void OnEnable()
+    {
+        Application.focusChanged += OnInBackgroundChange;
+        GUI.TutorialPanelClosed += Resume;
+        GUI.TutorialPanelOpened += Pause;
+        GUI.FinishPanelOpened += Pause;
+        AddShow.AdOpened += Pause;
+        AddShow.AdClosed += Resume;
+        LevelEnder.LevelEnded +=Pause;
+    }
+
+    private void OnDisable()
+    {
+        Application.focusChanged -= OnInBackgroundChange;
+        GUI.TutorialPanelClosed -= Resume;
+        GUI.TutorialPanelOpened -= Pause;
+        GUI.FinishPanelOpened -= Pause;
+        AddShow.AdOpened -= Pause;
+        AddShow.AdClosed -= Resume;
+        LevelEnder.LevelEnded -= Pause;
+    }
+
+    private void Pause()
     {
       if(_joyStick != null)
        {
@@ -27,7 +45,7 @@ public class GamePauser : MonoBehaviour
        Time.timeScale = 0;    
     }
 
-    public void Resume()
+    private void Resume()
     {
         if (IsPaused)
         {
@@ -43,5 +61,24 @@ public class GamePauser : MonoBehaviour
             IsPaused = false;
             Time.timeScale = 1;
         }   
+    }
+
+    private void OnInBackgroundChange(bool inBackground)
+    {
+        bool isOn;
+
+        if (inBackground)
+        {
+           Resume();
+            isOn = false;
+        }
+        else
+        {
+            Pause();
+            isOn = true;
+        }
+
+        AudioListener.pause = isOn;
+        AudioListener.volume = isOn ? 0f : 1f;
     }
 }
