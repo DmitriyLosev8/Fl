@@ -1,32 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using Assets.Scripts.AuxiliaryComponents;
+using System.Collections.Generic;
 
-public class LevelsPanel : MonoBehaviour
+namespace Assets.Scripts.GUI
 {
-    [SerializeField] private List<LevelButton> _levelButtons;
-
-    private int _openedLevels;
-
-    private void Start()
+    public class LevelsPanel : MonoBehaviour
     {
-        Paint();
-    }
+        [SerializeField] private List<LevelButton> _levelButtons;
 
-    private void Paint()
-    {
-        int mainMenu = 2;
+        private int _openedLevels;
+        private int _mainMenuSceneNumber = 2;
 
-        if (UnityEngine.PlayerPrefs.HasKey(KeySave.Level))
+        private void Start()
         {
-            _openedLevels = UnityEngine.PlayerPrefs.GetInt(KeySave.Level);  
+            ShowAvailableLevels();
         }
-            
-       for(int i = 0; i < _openedLevels - mainMenu; i++)
-        {
-            _levelButtons[i].SetWhiteColor();
+
+        private void ShowAvailableLevels()
+        {      
+            if (PlayerPrefs.HasKey(SavesTitles.Level))
+            {
+                _openedLevels = PlayerPrefs.GetInt(SavesTitles.Level);
+            }
+
+            for (int i = 0; i < _openedLevels - _mainMenuSceneNumber; i++)
+            {
+                _levelButtons[i].SetWhiteColor();
+            }
         }
     }
 }
-

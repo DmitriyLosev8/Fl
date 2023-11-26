@@ -1,14 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.InteractiveObjects.Character;
 
-public class FinishLevelZone : MonoBehaviour
+namespace Assets.Scripts.SceneWork
 {
-    [SerializeField] private LevelEnder _levelChanger;
-
-    private void OnTriggerEnter(Collider collision)
+    public class FinishLevelZone : MonoBehaviour
     {
-        if (collision.gameObject.TryGetComponent(out Player player))
-            _levelChanger.EndLevel();
+        [SerializeField] private LevelEnder _levelChanger;
+
+        private void OnTriggerEnter(Collider collision)
+        {
+            if (collision.gameObject.TryGetComponent(out Player player))
+            {
+                _levelChanger.EndLevel();
+            }      
+        }
     }
 }

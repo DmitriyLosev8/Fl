@@ -1,83 +1,84 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Assets.Scripts.InteractiveObjects.Character;
 
-public class Enemy : MonoBehaviour
+namespace Assets.Scripts.InteractiveObjects.Enemy
 {
-    [SerializeField] private bool _isScullPanelEnemy;
-
-    private float _healthDamage;
-    private float _oxygenDamage;
-    private float _lightDamage;
-    private int _sendingDamage;
-
-    private void Start()
+    public class Enemy : MonoBehaviour
     {
-        ChoseRandomDamage();
-    }
+        [SerializeField] private bool _isScullPanelEnemy;
+        [SerializeField] private int _oxygenDamageDelimiter = 2;
+        [SerializeField] private int _lowDamage = 4;
+        [SerializeField] private int _middleDamage = 8;
+        [SerializeField] private int _highDamage = 10;
+       
+        private int _scullPanelDamage = 150;
+        private float _healthDamage;
+        private float _oxygenDamage;
+        private float _lightDamage;
+        private int _sendingDamage;
+        private int _countOfDamages = 3;
+        private int _lowLevels = 2;
+        private int _highLevels = 6;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out Player player))
+
+        private void Start()
         {
-            SetValueOfDamage(player.Level);
+            ChoseRandomTypeOfDamage();
+        }
 
-            switch (_sendingDamage)
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.TryGetComponent(out Player player))
             {
-                case 0:
-                    player.TakeHealthDamage(_healthDamage);
-                    break;
-                case 1:
-                    player.TakeOxygenDamage(_oxygenDamage);
-                    break;
-                case 2:
-                    player.TakeLightDamage(_lightDamage);
-                    break;
+                SetValueOfDamage(player.Level);
+
+                switch (_sendingDamage)
+                {
+                    case 0:
+                        player.TakeHealthDamage(_healthDamage);
+                        break;
+                    case 1:
+                        player.TakeOxygenDamage(_oxygenDamage);
+                        break;
+                    case 2:
+                        player.TakeLightDamage(_lightDamage);
+                        break;
+                }
             }
         }
-    }
 
-    private void ChoseRandomDamage()
-    {
-        int countOfDamages = 3;
-        _sendingDamage = Random.Range(0, countOfDamages);
-    }
-
-    private void SetValueOfDamage(int level)
-    {
-        int oxygenDamageDelimiter = 2;
-        int lowDamage = 4;
-        int middleDamage = 8;
-        int highDamage = 10;
-        int scullPanelDamage = 150;
-           
-        if (level == 1 || level == 2)
-        {
-            _healthDamage = lowDamage;
-            _oxygenDamage = lowDamage / oxygenDamageDelimiter;
-            _lightDamage = lowDamage;
+        private void ChoseRandomTypeOfDamage()
+        { 
+            _sendingDamage = Random.Range(0, _countOfDamages);
         }
 
-        if (level == 3 || level == 4 || level == 5)
+        private void SetValueOfDamage(int level)
         {
-            _healthDamage = middleDamage;
-            _oxygenDamage = lowDamage / oxygenDamageDelimiter;
-            _lightDamage = middleDamage;
-        }
+            if (level <= _lowLevels)
+            {
+                _healthDamage = _lowDamage;
+                _oxygenDamage = _lowDamage / _oxygenDamageDelimiter;
+                _lightDamage = _lowDamage;
+            }
+            else if (level >= _highLevels)
+            {
+                _healthDamage = _highDamage;
+                _oxygenDamage = _highDamage / _oxygenDamageDelimiter;
+                _lightDamage = _highDamage;
+            }
+            else
+            {
+                _healthDamage = _middleDamage;
+                _oxygenDamage = _middleDamage / _oxygenDamageDelimiter;
+                _lightDamage = _middleDamage;
+            }
 
-        if (level >= 6)
-        {
-            _healthDamage = highDamage;
-            _oxygenDamage = lowDamage / oxygenDamageDelimiter;
-            _lightDamage = highDamage;
-        }
-
-        if (_isScullPanelEnemy)
-        {
-            _healthDamage = scullPanelDamage;
-            _oxygenDamage = scullPanelDamage;
-            _lightDamage = scullPanelDamage;
+            if (_isScullPanelEnemy)
+            {
+                _healthDamage = _scullPanelDamage;
+                _oxygenDamage = _scullPanelDamage;
+                _lightDamage = _scullPanelDamage;
+            }
         }
     }
 }

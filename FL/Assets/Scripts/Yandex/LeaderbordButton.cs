@@ -1,34 +1,35 @@
-using Agava.YandexGames;
 using Agava.YandexGames.Samples;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class LeaderbordButton : MonoBehaviour
+namespace Assets.Scripts.Yandex
 {
-    [SerializeField] private Button _button;
-    [SerializeField] private Button _closeButton;
-    [SerializeField] private LeaderboardDisplay _leaderbordDisplay;
-
-    private void OnEnable()
+    public class LeaderbordButton : MonoBehaviour
     {
-        _button.onClick.AddListener(OnButtonClick);
-        _closeButton.onClick.AddListener(OnCloseButtonClick);
-    }
+        [SerializeField] private Button _button;
+        [SerializeField] private Button _closeButton;
+        [SerializeField] private LeaderboardDisplay _leaderbordDisplay;
 
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnButtonClick);
-        _closeButton.onClick.RemoveListener(OnCloseButtonClick);
-    }
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OnButtonClick);
+            _closeButton.onClick.AddListener(OnCloseButtonClick);
+        }
 
-    private void OnButtonClick()
-    {
-        _leaderbordDisplay.gameObject.SetActive(true);
-    }
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnButtonClick);
+            _closeButton.onClick.RemoveListener(OnCloseButtonClick);
+        }
 
-    private void OnCloseButtonClick()
-    {
-        _leaderbordDisplay.gameObject.SetActive(false);
+        private void OnButtonClick()
+        {
+            _leaderbordDisplay.gameObject.SetActive(true);
+        }
+
+        private void OnCloseButtonClick()
+        {
+            _leaderbordDisplay.gameObject.SetActive(false);
+        }
     }
 }

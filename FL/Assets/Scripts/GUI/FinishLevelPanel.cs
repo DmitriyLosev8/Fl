@@ -1,39 +1,46 @@
-using TMPro;
 using System;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using Assets.Scripts.AuxiliaryComponents;
+using Assets.Scripts.Containers;
 
-public class FinishLevelPanel : MonoBehaviour
+namespace Assets.Scripts.GUI
 {
-    [SerializeField] private Button _button;
-    [SerializeField] private TMP_Text _lightsCount;
-    [SerializeField] private LevelContainer _levelSave;
-
-    public static Action NextLevelButtonClicked;
-
-    private void Start()
+    public class FinishLevelPanel : MonoBehaviour
     {
-        ShowLightOrbsCount();
-    }
+        [SerializeField] private Button _button;
+        [SerializeField] private TMP_Text _lightsCount;
+        [SerializeField] private LevelContainer _levelSave;
 
-    private void OnEnable()
-    {
-        _button.onClick.AddListener(OnClick);
-    }
+        public static Action NextLevelButtonClicked;
 
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnClick);
-    }
+        private void Start()
+        {
+            ShowLightOrbsCount();
+        }
 
-    private void OnClick()
-    {
-        NextLevelButtonClicked?.Invoke();
-    }
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OnClick);
+        }
 
-    private void ShowLightOrbsCount()
-    {
-        if (UnityEngine.PlayerPrefs.HasKey(KeySave.Light_Orb))
-            _lightsCount.text = UnityEngine.PlayerPrefs.GetInt(KeySave.Light_Orb).ToString();
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnClick);
+        }
+
+        private void OnClick()
+        {
+            NextLevelButtonClicked?.Invoke();
+        }
+
+        private void ShowLightOrbsCount()
+        {
+            if (PlayerPrefs.HasKey(SavesTitles.LightOrb))
+            {
+                _lightsCount.text = PlayerPrefs.GetInt(SavesTitles.LightOrb).ToString();
+            }
+        }
     }
 }

@@ -1,84 +1,96 @@
 using UnityEngine;
+using Assets.Scripts.GUI;
+using Assets.Scripts.Yandex;
 
-
-public class GamePauser : MonoBehaviour
+namespace Assets.Scripts.SceneWork
 {
-    public static bool IsPaused;
-   
-    [SerializeField] private GameObject _joyStick;
-    [SerializeField] AudioSource _music;
-
-    private void OnEnable()
+    public class GamePauser : MonoBehaviour
     {
-        Application.focusChanged += OnInBackgroundChange;
-        GUI.TutorialPanelClosed += Resume;
-        GUI.TutorialPanelOpened += Pause;
-        GUI.FinishPanelOpened += Pause;
-        AddShow.AdOpened += Pause;
-        AddShow.AdClosed += Resume;
-        LevelEnder.LevelEnded +=Pause;
-    }
+        public static bool IsPaused;
 
-    private void OnDisable()
-    {
-        Application.focusChanged -= OnInBackgroundChange;
-        GUI.TutorialPanelClosed -= Resume;
-        GUI.TutorialPanelOpened -= Pause;
-        GUI.FinishPanelOpened -= Pause;
-        AddShow.AdOpened -= Pause;
-        AddShow.AdClosed -= Resume;
-        LevelEnder.LevelEnded -= Pause;
-    }
+        [SerializeField] private GameObject _joyStick;
+        [SerializeField] private AudioSource _music;
 
-    private void Pause()
-    {
-      if(_joyStick != null)
-       {
-          if (Application.isMobilePlatform)
-             _joyStick.SetActive(false);
-       }
-           
-       if(_music != null)
-            _music.Pause();
+        private void OnEnable()
+        {
+            Application.focusChanged += OnInBackgroundChange;
+            UI.TutorialPanelClosed += Resume;
+            UI.TutorialPanelOpened += Pause;
+            UI.FinishPanelOpened += Pause;
+            AdShow.AdOpened += Pause;
+            AdShow.AdClosed += Resume;
+            LevelEnder.LevelEnded += Pause;
+        }
 
-       IsPaused = true;
-       Time.timeScale = 0;    
-    }
+        private void OnDisable()
+        {
+            Application.focusChanged -= OnInBackgroundChange;
+            UI.TutorialPanelClosed -= Resume;
+            UI.TutorialPanelOpened -= Pause;
+            UI.FinishPanelOpened -= Pause;
+            AdShow.AdOpened -= Pause;
+            AdShow.AdClosed -= Resume;
+            LevelEnder.LevelEnded -= Pause;
+        }
 
-    private void Resume()
-    {
-        if (IsPaused)
+        private void Pause()
         {
             if (_joyStick != null)
             {
                 if (Application.isMobilePlatform)
-                    _joyStick.SetActive(true);
+                {
+                    _joyStick.SetActive(false);
+                }         
             }
 
             if (_music != null)
-                _music.UnPause();
+            {
+                _music.Pause();
+            }    
 
-            IsPaused = false;
-            Time.timeScale = 1;
-        }   
-    }
-
-    private void OnInBackgroundChange(bool inBackground)
-    {
-        bool isOn;
-
-        if (inBackground)
-        {
-           Resume();
-            isOn = false;
-        }
-        else
-        {
-            Pause();
-            isOn = true;
+            IsPaused = true;
+            Time.timeScale = 0;
         }
 
-        AudioListener.pause = isOn;
-        AudioListener.volume = isOn ? 0f : 1f;
+        private void Resume()
+        {
+            if (IsPaused)
+            {
+                if (_joyStick != null)
+                {
+                    if (Application.isMobilePlatform)
+                    {
+                        _joyStick.SetActive(true);
+                    }         
+                }
+
+                if (_music != null)
+                {
+                    _music.UnPause();
+                }
+                    
+                IsPaused = false;
+                Time.timeScale = 1;
+            }
+        }
+
+        private void OnInBackgroundChange(bool inBackground)
+        {
+            bool isOn;
+
+            if (inBackground)
+            {
+                Resume();
+                isOn = false;
+            }
+            else
+            {
+                Pause();
+                isOn = true;
+            }
+
+            AudioListener.pause = isOn;
+            AudioListener.volume = isOn ? 0f : 1f;
+        }
     }
 }

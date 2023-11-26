@@ -1,20 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class JoyStickEnabler : MonoBehaviour
+namespace Assets.Scripts.AuxiliaryComponents
 {
-    [SerializeField] private GameObject _joyStick;
-
-
-    private void Start()
+    public class JoyStickEnabler : MonoBehaviour
     {
-        if (Application.isMobilePlatform)
-            EnableJoistick();
-    }
+        [SerializeField] private GameObject _joyStick;
 
-    private void EnableJoistick()
-    {
-        _joyStick.SetActive(true);
+        private void Start()
+        {
+            if (Application.isMobilePlatform)
+            {
+                EnableJoistick();
+            }         
+        }
+
+        private void EnableJoistick()
+        {
+            _joyStick.SetActive(true);
+        }
     }
 }

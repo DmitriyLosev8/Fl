@@ -1,93 +1,90 @@
 using System;
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.Containers;
+using Assets.Scripts.GUI;
+using Assets.Scripts.InteractiveObjects.Character;
 
-
-public class SceneSwitcher : MonoBehaviour
+namespace Assets.Scripts.SceneWork
 {
-    [SerializeField] private LevelContainer _levelSave;
-    [SerializeField] private GamePauser _pauseGame;
-    [SerializeField] private GameObject _nextLevelPanel;
-
-    private int _sceneToLoad = 2;
-
-    public static Action LevelStarted;
-
-    private void OnEnable()
-
+    public class SceneSwitcher : MonoBehaviour
     {
-        FinishLevelPanel.NextLevelButtonClicked += OnLevelChangedToNext;
-        TutorialPanel.LoadMainMenuButtonClicked += OnLoadMainMenu;
-        Player.Died += OnPlayerDied;
-        LevelButton.Clicked += OnLevelButtonClicked;
-    }
+        [SerializeField] private LevelContainer _levelSave;
+        [SerializeField] private GamePauser _pauseGame;
+        [SerializeField] private GameObject _nextLevelPanel;
 
-    private void OnDisable()
-    {
-        FinishLevelPanel.NextLevelButtonClicked -= OnLevelChangedToNext;
-        TutorialPanel.LoadMainMenuButtonClicked -= OnLoadMainMenu;
-        Player.Died -= OnPlayerDied;
-        LevelButton.Clicked -= OnLevelButtonClicked;
-    }
+        private int _sceneToLoad = 2;
+        private int _nextLevelNumber = 1;
+        private float _delayBeforDieOfPlayer = 0.5f;
 
-    private void LoadScene()
-    {
-        SceneManager.LoadScene(_sceneToLoad); 
-    }
+        public static Action LevelStarted;
 
-    private void OnExitButtonClicked()
-    {
-        Application.Quit();
-    }
-
-    private void OnLoadMainMenu()
-    {
-        if (_sceneToLoad != 1)
-            _sceneToLoad = 1;
-
-        _levelSave.SetCountOfAvalaibleLevels();
-        LoadScene();
-    }
-
-    private void LoadCurrenScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    private void OnLevelChangedToNext()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        _nextLevelPanel.SetActive(false);
-        _levelSave.IncreaseLevel();   
-    }
-
-    private void OnPlayerDied()
-    {
-        StartCoroutine(WaitOfPlayersDying()); 
-    }
-
-    private void SaveCurrentLevel()
-    {
-        UnityEngine.PlayerPrefs.SetInt(KeySave.Level, SceneManager.GetActiveScene().buildIndex);
-    }
-
-    private void OnLevelButtonClicked(int levelButtonId)
-    {
-        for (int i = 0; i < _levelSave.AvailableLevels.Count; i++)
+        private void OnEnable()
         {
-            if (levelButtonId == _levelSave.AvailableLevels[i])
+            FinishLevelPanel.NextLevelButtonClicked += OnLevelChangedToNext;
+            TutorialPanel.LoadMainMenuButtonClicked += OnLoadMainMenu;
+            Player.Died += OnPlayerDied;
+            LevelButton.Clicked += OnLevelButtonClicked;
+        }
+
+        private void OnDisable()
+        {
+            FinishLevelPanel.NextLevelButtonClicked -= OnLevelChangedToNext;
+            TutorialPanel.LoadMainMenuButtonClicked -= OnLoadMainMenu;
+            Player.Died -= OnPlayerDied;
+            LevelButton.Clicked -= OnLevelButtonClicked;
+        }
+
+        private void LoadScene()
+        {
+            SceneManager.LoadScene(_sceneToLoad);
+        }
+
+        private void OnLoadMainMenu()
+        {
+            if (_sceneToLoad != 1)
             {
-                _sceneToLoad = levelButtonId;
-                LoadScene();
+                _sceneToLoad = 1;
+            }
+                
+            _levelSave.SetCountOfAvalaibleLevels();
+            LoadScene();
+        }
+
+        private void LoadCurrenScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private void OnLevelChangedToNext()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + _nextLevelNumber);
+            _nextLevelPanel.SetActive(false);
+            _levelSave.IncreaseLevel();
+        }
+
+        private void OnPlayerDied()
+        {
+            StartCoroutine(WaitOfPlayersDying());
+        }
+
+        private void OnLevelButtonClicked(int levelButtonId)
+        {
+            for (int i = 0; i < _levelSave.AvailableLevels.Count; i++)
+            {
+                if (levelButtonId == _levelSave.AvailableLevels[i])
+                {
+                    _sceneToLoad = levelButtonId;
+                    LoadScene();
+                }
             }
         }
-    }
 
-    private IEnumerator WaitOfPlayersDying()
-    {
-        float delay = 0.5f;
-        yield return new WaitForSeconds(delay);
-        LoadCurrenScene();
+        private IEnumerator WaitOfPlayersDying()
+        {
+            yield return new WaitForSeconds(_delayBeforDieOfPlayer);
+            LoadCurrenScene();
+        }
     }
 }

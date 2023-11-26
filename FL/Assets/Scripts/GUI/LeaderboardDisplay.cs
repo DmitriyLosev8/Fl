@@ -1,13 +1,10 @@
-using System.Collections;
-using Agava.YandexGames;
-using Agava.YandexGames.Samples;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
+using Assets.Scripts.Containers;
+using Assets.Scripts.Yandex;
 
-namespace Agava.YandexGames.Samples 
+namespace Agava.YandexGames.Samples
 {
     public class LeaderboardDisplay : MonoBehaviour
     {
@@ -19,8 +16,6 @@ namespace Agava.YandexGames.Samples
         [SerializeField] private InputField _cloudSaveDataInputField;
         [SerializeField] private TMP_Text _anonimus;
         [SerializeField] private YandexAuthorizationPanel _authorizationPanel;
-
-        private int _countOfLights;
 
         private void Awake()
         {
@@ -36,9 +31,7 @@ namespace Agava.YandexGames.Samples
             else
             {
                 gameObject.SetActive(false);
-            }
-            
-            _countOfLights = _lightContainer.Lights;
+            }           
         }
 
         public void OpenLeaderboard()
@@ -71,7 +64,8 @@ namespace Agava.YandexGames.Samples
 
             error =>
             {
-            });
+            }
+            );
         }
 
         public void SetLeaderboardScore()
@@ -88,5 +82,3 @@ namespace Agava.YandexGames.Samples
         }
     }
 }
-
-

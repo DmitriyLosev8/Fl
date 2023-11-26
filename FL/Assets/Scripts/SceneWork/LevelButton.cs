@@ -37,12 +37,5 @@ public class LevelButton : MonoBehaviour
     public void SetWhiteColor()
     {
         _button.image.color = Color.white;
-    }
-    
-    public void SetGreyColor()
-    {
-        _button.image.color = Color.grey;
-    }
+    }   
 }
-
-

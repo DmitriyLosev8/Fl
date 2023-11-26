@@ -1,57 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Assets.Scripts.AuxiliaryComponents;
+using System.Collections.Generic;
 
-public class LevelContainer : MonoBehaviour
+namespace Assets.Scripts.Containers
 {
-    public List<int> AvailableLevels;
-   
-    private int _countOfAvailableLevels;
-    private List<int> _allLevels = new List<int>();
-    private int _startLevel = 3;
-
-    private void Start()
+    public class LevelContainer : MonoBehaviour
     {
-        FillAllLevels();
-        SetCountOfAvalaibleLevels();
-        SetAvalaibleLevels();
-    }
+        public List<int> AvailableLevels;
 
-    public void SetCountOfAvalaibleLevels()
-    {
-        if (PlayerPrefs.HasKey(KeySave.Level))
-            _countOfAvailableLevels = UnityEngine.PlayerPrefs.GetInt(KeySave.Level);
-        else
+        private int _countOfAvailableLevels; 
+        private int _startLevel = 3;
+        private int _countOfLevels = 10;
+        private int _currentLevel = 0;
+        private List<int> _allLevels = new List<int>();
+
+        private void Start()
         {
-            _countOfAvailableLevels = _startLevel;
-            UnityEngine.PlayerPrefs.SetInt(KeySave.Level, _countOfAvailableLevels);
+            FillAllLevels();
+            SetCountOfAvalaibleLevels();
+            SetAvalaibleLevels();
         }
-    }
 
-    public void IncreaseLevel()
-    {
-        _countOfAvailableLevels++;
-        UnityEngine.PlayerPrefs.SetInt(KeySave.Level, _countOfAvailableLevels);
-        UnityEngine.PlayerPrefs.Save();
-    }
-   
-    private void FillAllLevels()
-    {
-        int countOfLevels = 10;
-        int currentLevel = 0;
-
-        for (int i = 0; i < countOfLevels; i++)
+        public void SetCountOfAvalaibleLevels()
         {
-            _allLevels.Add(currentLevel++);
+            if (PlayerPrefs.HasKey(SavesTitles.Level))
+            {
+                _countOfAvailableLevels = PlayerPrefs.GetInt(SavesTitles.Level);
+            }       
+            else
+            {
+                _countOfAvailableLevels = _startLevel;
+                PlayerPrefs.SetInt(SavesTitles.Level, _countOfAvailableLevels);
+            }
         }
-    }
 
-    private void SetAvalaibleLevels()
-    {
-        for(int i = 0; i < _countOfAvailableLevels; i++)
+        public void IncreaseLevel()
         {
-            AvailableLevels.Add(_allLevels[i]);
+            _countOfAvailableLevels++;
+            PlayerPrefs.SetInt(SavesTitles.Level, _countOfAvailableLevels);
+            PlayerPrefs.Save();
+        }
+
+        private void FillAllLevels()
+        {
+            for (int i = 0; i < _countOfLevels; i++)
+            {
+                _allLevels.Add(_currentLevel++);
+            }
+        }
+
+        private void SetAvalaibleLevels()
+        {
+            for (int i = 0; i < _countOfAvailableLevels; i++)
+            {
+                AvailableLevels.Add(_allLevels[i]);
+            }
         }
     }
 }

@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TutorialPanel : MonoBehaviour
+namespace Assets.Scripts.GUI
 {
-    public static UnityAction LoadMainMenuButtonClicked;
-
-    public void OnLoadMainMenuButtonClicked()
+    public class TutorialPanel : MonoBehaviour
     {
-        Time.timeScale = 1;
-        LoadMainMenuButtonClicked?.Invoke();
+        public static UnityAction LoadMainMenuButtonClicked;
+
+        public void OnLoadMainMenuButtonClicked()
+        {
+            Time.timeScale = 1;
+            LoadMainMenuButtonClicked?.Invoke();
+        }
     }
 }

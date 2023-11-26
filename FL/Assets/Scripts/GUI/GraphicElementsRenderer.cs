@@ -1,45 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.DoorSystem;
+using Assets.Scripts.InteractiveObjects.Character;
 
-public class GraphicElementsRenderer : MonoBehaviour
+namespace Assets.Scripts.GUI
 {
-    [SerializeField] private Transform _keySpace;
-    [SerializeField] private DoorPointer _pointer;
-
-    private void OnEnable()
+    public class GraphicElementsRenderer : MonoBehaviour
     {
-        Player.KeyPickedUp += OnKeyPickedUp;
-        Player.CharacterWalkedOutADoor += OnCharacterWalkedOutADoor;
-    }
+        [SerializeField] private Transform _keySpace;
+        [SerializeField] private DoorPointer _pointer;
 
-    private void OnDisable()
-    {
-        Player.KeyPickedUp -= OnKeyPickedUp;
-        Player.CharacterWalkedOutADoor -= OnCharacterWalkedOutADoor;
-    }
+        private void OnEnable()
+        {
+            Player.KeyPickedUp += OnKeyPickedUp;
+            Player.CharacterWalkedOutADoor += OnCharacterWalkedOutADoor;
+        }
 
-    private void EnablePointer()
-    {
-        _pointer.gameObject.SetActive(true);
-    }
+        private void OnDisable()
+        {
+            Player.KeyPickedUp -= OnKeyPickedUp;
+            Player.CharacterWalkedOutADoor -= OnCharacterWalkedOutADoor;
+        }
 
-    private void DisablePointer()
-    {
-        _pointer.gameObject.SetActive(false);
-    }
+        private void EnablePointer()
+        {
+            _pointer.gameObject.SetActive(true);
+        }
 
-    private void OnKeyPickedUp(Key key)
-    {
-        key.transform.position = _keySpace.position;
-        key.transform.rotation = _keySpace.rotation;
-        key.transform.SetParent(_keySpace);
-        EnablePointer();
-    }
+        private void DisablePointer()
+        {
+            _pointer.gameObject.SetActive(false);
+        }
 
-    private void OnCharacterWalkedOutADoor()
-    {
-        DisablePointer();
-        Destroy(GetComponent<Key>());
+        private void OnKeyPickedUp(Key key)
+        {
+            key.transform.position = _keySpace.position;
+            key.transform.rotation = _keySpace.rotation;
+            key.transform.SetParent(_keySpace);
+            EnablePointer();
+        }
+
+        private void OnCharacterWalkedOutADoor()
+        {
+            DisablePointer();
+            Destroy(GetComponent<Key>());
+        }
     }
 }

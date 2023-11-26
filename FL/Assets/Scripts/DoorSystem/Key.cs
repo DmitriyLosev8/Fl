@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public class Key : MonoBehaviour
+namespace Assets.Scripts.DoorSystem
 {
-    [SerializeField] private int _id;
+    public class Key : MonoBehaviour
+    {
+        [SerializeField] private int _id;
 
-    public int Id => _id;
+        public int Id => _id;
+    }
 }

@@ -1,40 +1,46 @@
 using System;
 using UnityEngine;
+using Assets.Scripts.AuxiliaryComponents;
 
-public class LightContainer : MonoBehaviour
+namespace Assets.Scripts.Containers
 {
-    private int _lights;
-    private int _startLights = 0;
-
-    public static Action<int> LightChanged;
-   
-    public int Lights => _lights;
-   
-    private void Start()
+    public class LightContainer : MonoBehaviour
     {
-        if (UnityEngine.PlayerPrefs.HasKey(KeySave.Light_Orb))
-            _lights = UnityEngine.PlayerPrefs.GetInt(KeySave.Light_Orb);
-        else
+        private int _lights;
+        private int _startLights = 0;
+
+        public static Action<int> LightChanged;
+
+        public int Lights => _lights;
+
+        private void Start()
         {
-            _lights = _startLights;
-            UnityEngine.PlayerPrefs.SetInt(KeySave.Light_Orb, _lights);
-            UnityEngine.PlayerPrefs.Save();
+            if (PlayerPrefs.HasKey(SavesTitles.LightOrb))
+            {
+                _lights = PlayerPrefs.GetInt(SavesTitles.LightOrb);
+            }       
+            else
+            {
+                _lights = _startLights;
+                PlayerPrefs.SetInt(SavesTitles.LightOrb, _lights);
+                PlayerPrefs.Save();
+            }
+
+            LightChanged?.Invoke(_lights);
         }
 
-        LightChanged?.Invoke(_lights);
-    }
+        public void ApplyLights(int light)
+        {
+            _lights += light;
+            LightChanged?.Invoke(_lights);
+            PlayerPrefs.SetInt(SavesTitles.LightOrb, _lights);
+            PlayerPrefs.Save();
+        }
 
-    public void ApplyLights(int light)
-    {
-        _lights += light;
-        LightChanged?.Invoke(_lights);
-        UnityEngine.PlayerPrefs.SetInt(KeySave.Light_Orb, _lights);
-        UnityEngine.PlayerPrefs.Save();
-    }
-
-    public void LoseLights(int light)
-    {
-        _lights -= light;
-        LightChanged?.Invoke(_lights);
+        public void LoseLights(int light)
+        {
+            _lights -= light;
+            LightChanged?.Invoke(_lights);
+        }
     }
 }

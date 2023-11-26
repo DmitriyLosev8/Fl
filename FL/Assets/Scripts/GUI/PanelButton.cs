@@ -1,33 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PanelButton : MonoBehaviour
+namespace Assets.Scripts.GUI
 {
-    [SerializeField] private Button _button;
-    [SerializeField] private Button _closeButton;
-    [SerializeField] private GameObject _panel;
-
-    private void OnEnable()
+    public class PanelButton : MonoBehaviour
     {
-        _button.onClick.AddListener(OnButtonClicked);
-        _closeButton.onClick.AddListener(OnCloseButtonClicked);
-    }
+        [SerializeField] private Button _button;
+        [SerializeField] private Button _closeButton;
+        [SerializeField] private GameObject _panel;
 
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnButtonClicked);
-        _closeButton.onClick.RemoveListener(OnCloseButtonClicked);
-    }
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OnButtonClicked);
+            _closeButton.onClick.AddListener(OnCloseButtonClicked);
+        }
 
-    public void OnButtonClicked()
-    {
-        _panel.SetActive(true);
-    }
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnButtonClicked);
+            _closeButton.onClick.RemoveListener(OnCloseButtonClicked);
+        }
 
-    public void OnCloseButtonClicked()
-    {
-        _panel.SetActive(false);
+        public void OnButtonClicked()
+        {
+            _panel.SetActive(true);
+        }
+
+        public void OnCloseButtonClicked()
+        {
+            _panel.SetActive(false);
+        }
     }
 }

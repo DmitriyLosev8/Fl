@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LevelEnder : MonoBehaviour
+namespace Assets.Scripts.SceneWork
 {
-    public static event UnityAction LevelEnded;
-
-    public void EndLevel()
+    public class LevelEnder : MonoBehaviour
     {
-        LevelEnded?.Invoke();
+        public static event UnityAction LevelEnded;
+
+        public void EndLevel()
+        {
+            LevelEnded?.Invoke();
+        }
     }
 }

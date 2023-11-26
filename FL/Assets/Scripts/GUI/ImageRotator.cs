@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ImageRotator : MonoBehaviour
-{  
-    private float _rotateValue = -0.5f;
-    
-    private void Update()
+namespace Assets.Scripts.GUI
+{
+    public class ImageRotator : MonoBehaviour
     {
-        transform.Rotate(0, 0, _rotateValue);
+        private float _rotateValue = -0.5f;
+
+        private void Update()
+        {
+            transform.Rotate(0, 0, _rotateValue);
+        }
     }
 }

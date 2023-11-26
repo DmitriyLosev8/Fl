@@ -1,97 +1,109 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class CircleRenderer : MonoBehaviour
+namespace Assets.Scripts.GUI
 {
-    [SerializeField] private ParticleSystem _circle;
-    [SerializeField] private List<Transform> _targetsToDetect;
-
-    private float _distanceToNearestTarget;
-    private List<float> _distancesToTargets = new List<float>();
-    private float _distanceToDisableCircle = 1.2f;
-    private float _redDistance = 30;
-    private float _yellowDistance = 20;
-    private float _greenDistance = 10;
-
-    private void Start()
+    public class CircleRenderer : MonoBehaviour
     {
-        DetermineStartDistances();
-    }
+        [SerializeField] private ParticleSystem _circle;
+        [SerializeField] private List<Transform> _targetsToDetect;
 
-    private void Update()
-    {
-        DetermineDistancesToTargets();
-        DetermineNearestTarget();
-        RemoveCollectedTarget();
-        Render();  
-    }
+        private float _distanceToNearestTarget;  
+        private float _distanceToDisableCircle = 1.2f;
+        private float _redDistance = 30;
+        private float _yellowDistance = 20;
+        private float _greenDistance = 10;
+        private List<float> _distancesToTargets = new List<float>();
 
-    [System.Obsolete]
-    public void Render()
-    {
-        if (_distanceToNearestTarget > _redDistance || _distanceToNearestTarget <= _distanceToDisableCircle)
-            DisableCircle();
-        else
-            EnableCircle();
-
-        if (_distanceToNearestTarget <= _redDistance && _distanceToNearestTarget > _yellowDistance)
-            _circle.startColor = Color.red;
-
-        if (_distanceToNearestTarget <= _yellowDistance && _distanceToNearestTarget > _greenDistance)
-            _circle.startColor = Color.yellow;
-
-        if (_distanceToNearestTarget <= _greenDistance)
-            _circle.startColor = Color.green;
-    }
-
-    public void DetermineDistancesToTargets()
-    {
-        for (int i = 0; i < _targetsToDetect.Count; i++)
+        private void Start()
         {
-            if (_targetsToDetect[i] != null)
+            DetermineStartDistances();
+        }
+
+        private void Update()
+        {
+            DetermineDistancesToTargets();
+            DetermineNearestTarget();
+            RemoveCollectedTarget();
+            Render();
+        }
+
+        [System.Obsolete]
+        private void Render()
+        {
+            if (_distanceToNearestTarget > _redDistance || _distanceToNearestTarget <= _distanceToDisableCircle)
             {
-                _distancesToTargets[i] = Vector3.Distance(transform.position, _targetsToDetect[i].position);
+                DisableCircle();
+            }
+            else
+            {
+                EnableCircle();
+            }
+
+            if (_distanceToNearestTarget <= _redDistance && _distanceToNearestTarget > _yellowDistance)
+            {
+                _circle.startColor = Color.red;
+            }
+
+            if (_distanceToNearestTarget <= _yellowDistance && _distanceToNearestTarget > _greenDistance)
+            {
+                _circle.startColor = Color.yellow;
+            }
+
+            if (_distanceToNearestTarget <= _greenDistance)
+            {
+                _circle.startColor = Color.green;
             }
         }
-    }
 
-    private void DetermineNearestTarget()
-    {   
-        _distanceToNearestTarget = _distancesToTargets.Min();
-    }
-
-    private void DetermineStartDistances()
-    {
-        for (int i = 0; i < _targetsToDetect.Count; i++)
+        private void DetermineDistancesToTargets()
         {
-            if (_targetsToDetect[i] != null)
+            for (int i = 0; i < _targetsToDetect.Count; i++)
             {
-                _distancesToTargets.Add(Vector3.Distance(transform.position, _targetsToDetect[i].position));
+                if (_targetsToDetect[i] != null)
+                {
+                    _distancesToTargets[i] = Vector3.Distance(transform.position, _targetsToDetect[i].position);
+                }
             }
         }
-    }
 
-    private void RemoveCollectedTarget()
-    {
-        int indexToRemove;
-        
-        if(_distancesToTargets.Min() <= _distanceToDisableCircle)
+        private void DetermineNearestTarget()
         {
-            indexToRemove = _distancesToTargets.IndexOf(_distancesToTargets.Min());
-            _distancesToTargets.RemoveAt(indexToRemove);
-            _targetsToDetect.RemoveAt(indexToRemove);    
+            _distanceToNearestTarget = _distancesToTargets.Min();
         }
-    }
 
-    private void EnableCircle()
-    {
-        _circle.gameObject.SetActive(true);
-    }
+        private void DetermineStartDistances()
+        {
+            for (int i = 0; i < _targetsToDetect.Count; i++)
+            {
+                if (_targetsToDetect[i] != null)
+                {
+                    _distancesToTargets.Add(Vector3.Distance(transform.position, _targetsToDetect[i].position));
+                }
+            }
+        }
 
-    private void DisableCircle()
-    {
-        _circle.gameObject.SetActive(false);
+        private void RemoveCollectedTarget()
+        {
+            int indexToRemove;
+
+            if (_distancesToTargets.Min() <= _distanceToDisableCircle)
+            {
+                indexToRemove = _distancesToTargets.IndexOf(_distancesToTargets.Min());
+                _distancesToTargets.RemoveAt(indexToRemove);
+                _targetsToDetect.RemoveAt(indexToRemove);
+            }
+        }
+
+        private void EnableCircle()
+        {
+            _circle.gameObject.SetActive(true);
+        }
+
+        private void DisableCircle()
+        {
+            _circle.gameObject.SetActive(false);
+        }
     }
 }

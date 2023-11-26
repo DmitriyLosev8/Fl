@@ -1,32 +1,37 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-public class IconOfDoor : MonoBehaviour
+namespace Assets.Scripts.DoorSystem
 {
-    private const string CanBecomeGreen = "CanBecomeGreen";
-
-    [SerializeField] private int _id;
-
-    private Animator _animator;
-
-    private void Start()
+    [RequireComponent(typeof(Animator))]
+    public class IconOfDoor : MonoBehaviour
     {
-        _animator = GetComponent<Animator>();
+        private const string CanBecomeGreen = "CanBecomeGreen";
+
+        [SerializeField] private int _id;
+
+        private Animator _animator;
+
+        private void Start()
+        {
+            _animator = GetComponent<Animator>();
+        }
+
+        private void OnEnable()
+        {
+            Door.Opened += StartOpenedAnimation;
+        }
+
+        private void OnDisable()
+        {
+            Door.Opened -= StartOpenedAnimation;
+        }
+
+        private void StartOpenedAnimation(int id)
+        {
+            if (id == _id)
+            {
+                _animator.SetBool(CanBecomeGreen, true);
+            }
+        }
     }
-
-    private void OnEnable()
-    {
-        Door.Opened += StartOpenedAnimation;
-    }
-   
-    private void OnDisable()
-    {
-        Door.Opened -= StartOpenedAnimation;
-    }
-
-    public void StartOpenedAnimation(int id)
-    {
-        if(id == _id)
-            _animator.SetBool(CanBecomeGreen, true);
-    }        
 }

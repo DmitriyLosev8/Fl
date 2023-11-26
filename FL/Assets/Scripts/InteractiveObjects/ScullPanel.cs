@@ -1,42 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.InteractiveObjects.Character;
 
-public class ScullPanel : MonoBehaviour
+namespace Assets.Scripts.InteractiveObjects
 {
-    [SerializeField] private Light _leftEye;
-    [SerializeField] private Light _rightEye;
-    [SerializeField] private GameObject _deadlyEnemy;
-
-    private void OnTriggerEnter(Collider other)
+    public class ScullPanel : MonoBehaviour
     {
-        if (other.gameObject.TryGetComponent(out Player player))
+        [SerializeField] private Light _leftEye;
+        [SerializeField] private Light _rightEye;
+        [SerializeField] private GameObject _deadlyEnemy;
+
+        private int _valueOfLightOn = 30;
+        private int _valueOfLightOff = 0;
+
+        private void OnTriggerEnter(Collider other)
         {
-            TurnLightOn();
-            _deadlyEnemy.SetActive(true);
+            if (other.gameObject.TryGetComponent(out Player player))
+            {
+                TurnLightOn();
+                _deadlyEnemy.SetActive(true);
+            }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out Player player))
+        private void OnTriggerExit(Collider other)
         {
-            TurnLightOff();
-            _deadlyEnemy.SetActive(false);
+            if (other.gameObject.TryGetComponent(out Player player))
+            {
+                TurnLightOff();
+                _deadlyEnemy.SetActive(false);
+            }
         }
-    }
 
-    private void TurnLightOn()
-    {
-        int valueOfLightOn = 30;
-        _leftEye.intensity = valueOfLightOn;
-        _rightEye.intensity = valueOfLightOn;
-    }
+        private void TurnLightOn()
+        {
+            _leftEye.intensity = _valueOfLightOn;
+            _rightEye.intensity = _valueOfLightOn;
+        }
 
-    private void TurnLightOff()
-    {
-        int valueOfLightOff = 0;
-        _leftEye.intensity = valueOfLightOff;
-        _rightEye.intensity = valueOfLightOff;
+        private void TurnLightOff()
+        {
+            _leftEye.intensity = _valueOfLightOff;
+            _rightEye.intensity = _valueOfLightOff;
+        }
     }
 }

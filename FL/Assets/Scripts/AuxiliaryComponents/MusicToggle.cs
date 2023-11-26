@@ -1,58 +1,70 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MusicToggle : MonoBehaviour
+namespace Assets.Scripts.AuxiliaryComponents
 {
-    [SerializeField] private AudioSource _music;
-    [SerializeField] private Toggle _musicToggle;
-
-    private void Start()
+    public class MusicToggle : MonoBehaviour
     {
-        TurnSound();
-    }
+        [SerializeField] private AudioSource _music;
+        [SerializeField] private Toggle _musicToggle;
 
-    private void OnEnable()
-    {
-        _musicToggle.onValueChanged.AddListener(OnSetMusicValue);
-    }
+        private int  _turnedOn = 1;
+        private int _turnedOff = 0;
 
-    private void OnDisable()
-    {
-        _musicToggle.onValueChanged.RemoveListener(OnSetMusicValue);
-    }
-
-    private void OnSetMusicValue(bool isOn)
-    {
-        int turnedOn = 1;
-        int turnedOff = 0;
-
-        if (isOn)
-            UnityEngine.PlayerPrefs.SetInt(KeySave.Music, turnedOn);
-        else
-            UnityEngine.PlayerPrefs.SetInt(KeySave.Music, turnedOff);
-
-        TurnSound();
-    }
-
-
-    private void TurnSound()
-    {
-        int turnedOn = 1;
-
-        if (UnityEngine.PlayerPrefs.HasKey(KeySave.Music))
+        private void Start()
         {
-            if (UnityEngine.PlayerPrefs.GetInt(KeySave.Music) == turnedOn)
+            SwitchMusic();
+        }
+
+        private void OnEnable()
+        {
+            _musicToggle.onValueChanged.AddListener(OnSetMusicValue);
+        }
+
+        private void OnDisable()
+        {
+            _musicToggle.onValueChanged.RemoveListener(OnSetMusicValue);
+        }
+
+        private void OnSetMusicValue(bool isOn)
+        {
+            if (isOn)
             {
-                _music.Play();
-                _musicToggle.isOn = true;
+                PlayerPrefs.SetInt(SavesTitles.Music, _turnedOn);
             }
             else
             {
-                _music.Stop();
-                _musicToggle.isOn = false;
+                PlayerPrefs.SetInt(SavesTitles.Music, _turnedOff);
+            }         
+           
+            SwitchMusic();
+        }
+
+        private void SwitchMusic()
+        {          
+            if (PlayerPrefs.HasKey(SavesTitles.Music))
+            {
+                if (PlayerPrefs.GetInt(SavesTitles.Music) == _turnedOn)
+                {
+                    TurnMusicOn();
+                }
+                else
+                {
+                    TurnMusicOff();
+                }
             }
+        }
+
+        private void TurnMusicOn()
+        {
+            _music.Play();
+            _musicToggle.isOn = true;
+        }
+
+        private void TurnMusicOff()
+        {
+            _music.Stop();
+            _musicToggle.isOn = false;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.DoorSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

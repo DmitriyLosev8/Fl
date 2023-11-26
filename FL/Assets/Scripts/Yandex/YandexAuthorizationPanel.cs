@@ -1,33 +1,35 @@
-using Agava.YandexGames;
-using Agava.YandexGames.Samples;
 using UnityEngine;
 using UnityEngine.UI;
+using Agava.YandexGames;
 
-public class YandexAuthorizationPanel : MonoBehaviour
+namespace Assets.Scripts.Yandex
 {
-    [SerializeField] private Button _authorizationButton;
-    [SerializeField] private Button _closeAuthorizatButton;
-
-    private void OnEnable()
+    public class YandexAuthorizationPanel : MonoBehaviour
     {
-        _authorizationButton.onClick.AddListener(OnAuthorizationButtonClick);
-        _closeAuthorizatButton.onClick.AddListener(OnCloseAuthorizationButtonClick);
-    }
+        [SerializeField] private Button _authorizationButton;
+        [SerializeField] private Button _closeAuthorizatButton;
 
-    private void OnDisable()
-    {
-        _authorizationButton.onClick.RemoveListener(OnAuthorizationButtonClick);
-        _closeAuthorizatButton.onClick.RemoveListener(OnCloseAuthorizationButtonClick);
-    }
+        private void OnEnable()
+        {
+            _authorizationButton.onClick.AddListener(OnAuthorizationButtonClick);
+            _closeAuthorizatButton.onClick.AddListener(OnCloseAuthorizationButtonClick);
+        }
 
-    private void OnAuthorizationButtonClick()
-    {
-        PlayerAccount.Authorize();
-        gameObject.SetActive(false);
-    }
+        private void OnDisable()
+        {
+            _authorizationButton.onClick.RemoveListener(OnAuthorizationButtonClick);
+            _closeAuthorizatButton.onClick.RemoveListener(OnCloseAuthorizationButtonClick);
+        }
 
-    private void OnCloseAuthorizationButtonClick()
-    {
-        gameObject.SetActive(false);
+        private void OnAuthorizationButtonClick()
+        {
+            PlayerAccount.Authorize();
+            gameObject.SetActive(false);
+        }
+
+        private void OnCloseAuthorizationButtonClick()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
